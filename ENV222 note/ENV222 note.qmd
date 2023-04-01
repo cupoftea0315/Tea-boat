@@ -1,0 +1,760 @@
+---
+title: "**ENV222 NOTE**"
+subtitle: "*R in statistics*"
+author:
+  - "TC-tea"
+date: "`r Sys.Date()`"
+date-format: "YYYY.MM.DD"
+format: html
+toc: true
+toc-location: left
+fontsize: 12pt
+fontfamily: Tahoma
+---
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  background-color: white;
+  color: black;
+}
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+/* Add this CSS */
+#myBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: lightgray;
+}
+/* Add this CSS */
+#myBtn:before {
+    content:"☀";
+}
+/* Add this CSS */
+.dark-mode #myBtn:before {
+    content:"🌙";
+}
+</style>
+</head>
+
+<body>
+<button id="myBtn" onclick="myFunction()"></button>
+<script>
+function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
+</body>
+
+<a href="#" id="back-to-top" title="Back to top">^</a>
+<style>
+    #back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: #fff;
+        background-color: #000;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+    }
+</style>
+
+👉🏻[Click to enter the exercise section](../ENV222 exercise/ENV222 exercise.html)
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**1**</span> R-markdown syntax
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**1.1**</span> Fundamental
+
+-   Subscript by Rmarkdown: Use `PM~2.5~` to form PM~2.5~. <br>Subscript by html: `log<sub>2</sub>` will be displayed as log<sub>2</sub>.<br>
+
+-   Superscript by Rmarkdown: Use `R^2^` to form R^2^. <br>Superscript by html: `2<sup>n</sup>` will be displayed as 2<sup>n</sup>.<br>
+
+-   Use `$E = mc^2$` to form $E = mc^2$<br>
+
+-   Use `[Link of XJTLU](http://xjtlu.edu.cn)` to form [Link of XJTLU](https://www.xjtlu.edu.cn/en/)<br>
+
+-   Use `<center><img src="images/rstudio-qmd-how-it-works.png" width="1400" height="257"/>` or `<center> ![rstudio qmd how it works](images/rstudio-qmd-how-it-works.png){width=100%}` to form<br>
+
+    <center>
+
+    ![rstudio qmd how it works](images/rstudio-qmd-how-it-works.png){width="100%"}<br>
+
+-   Use something like `{r, fig.width = 6, fig.height = 4, fig.align='center'}` in front of the code chunk to change the output graphics
+
+-   Also, use`{r, XXX-Plot, fig.cap="XXX-Plot"}` in the front of code chunk to add a caption of this figure
+
+-   Use something like`<span style="color:red; font-weight:bold; font-size:16px; font-family:Tahoma;">sentence</span>` to change the properties of text
+
+-   Use<br> `| Name | Math | English |`<br> `|:----:|:-----|--------:|`<br> `| Tom  | 93   |     100 |`<br> `| Mary | 60   |      90 |`<br> to form<br>
+
+| Name | Math | English |
+|:----:|:-----|--------:|
+| Tom  | 93   |     100 |
+| Mary | 60   |      90 |
+
+-   Or use
+
+```{r echo=TRUE}
+library(knitr)
+df <- data.frame(
+  Math = c(80, 90),
+  English = c(85, 95),
+  row.names = c("Tom", "Mary")
+)
+kable(df, format = "markdown")
+```
+
+-   Use
+
+```         
+- 1. 
+- 2. 
+    - 1.
+    - 2.
+- 3.
+```
+
+to form sub-rank like this below:<br>
+
+-   
+
+    1.  
+
+-   
+
+    2.  
+
+    -   
+
+        1.  
+
+    -   
+
+        2.  
+
+-   
+
+    3.  
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**1.2**</span> Advanced
+
+-   Numbering, caption, and cross-reference of R-plots in academic paper [Click to see the detail in ENV222 Week5-5.2](https://pzhao.org/openr/R-graphs-advanced.html)
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**2**</span> Basic R charaters
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**2.1**</span> Check the data type
+
+```{r echo=TRUE}
+# import dataset
+x <- 'The world is on the verge of being flipped topsy-turvy.'
+dtf <- read.csv('data/student_names.csv')
+head(dtf)
+# data type
+class(x)
+# length of the dataset
+length(x)
+# length of the sub dataset
+nchar(x)
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**2.2**</span> Index to maximum and minimum values
+
+-   Find the longest name in [*student_names.csv*]{style="color:green"}, `which.max` or `which.min` is used to find the index of the (first) minimum or maximum of a numeric (or logical) vector
+
+```{r echo=TRUE}
+name_n <- nchar(dtf$Name)
+name_nmax <- which.max(name_n)
+dtf$Name[name_nmax]
+# or
+dtf$Name[which.max(nchar((dtf$Name)))]
+# or
+library(magrittr)
+dtf$Name %>% nchar() %>% which.max() %>% dtf$Name[.]
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**2.3**</span> Capital and small letter
+
+```{r echo=TRUE}
+# tolower() toupper()
+(xupper <- toupper(x))
+(dtf$pro <- tolower(dtf$Prgrm))
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**2.4**</span> Split string
+
+```{r echo=TRUE}
+# strsplit()
+x_word <- strsplit(xupper, ' ')
+class(x_word)
+# If you want to extract the first element in the list, you need to use double brackets [[]], and if you want to extract the first sublist in the list, use single brackets []
+x_word1 <- x_word[[1]]
+class(x_word1)
+table(x_word1)  # Form a table which involved the frequency of each char acter
+x_word1[!duplicated(x_word1)]  # Find the distinct characters in the list by use duplicated() function
+unique(x_word1)  # Other way yo detect the distinct characters
+lapply(x_word, length)  # The output of the lapply() function is a list
+sapply(x_word, length)  # The output of the sapply() function is a vector or a matrix
+sapply(x_word, nchar)
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**2.5**</span> Separate column
+
+```{r echo=TRUE}
+# separate() is a function in the tidyr package that can be used to split a column in a data box into multiple columns
+library(tidyr)
+dtf2 <- separate(dtf, Name, c("GivenName", "LastName"), sep = ' ')  # separate(data, col, into, sep)
+dtf$FamilyName <- dtf2$LastName
+head(dtf)
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**2.6**</span> Extract
+
+The world is [on]{style="color:red"} the verge of being flipped topsy-turvy.
+
+```{r echo=TRUE}
+# substr() is a built-in function in R that can be used to extract or replace substrings from a character vector
+substr(x, 13, 15)  # substr(x, start, stop)
+dtf$NameAbb <- substr(dtf$Name, 1, 1)
+head(dtf, 3)
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**2.7**</span> Connect
+
+```{r echo=TRUE}
+# paste() function can convert multiple objects into character vectors and concatenate them
+paste(x, '<end>', sep = ' ')  # paste(x1, x2,... sep, collapse)
+paste(dtf$NameAbb, '.', sep = '')
+paste(dtf$NameAbb, collapse = ' ')  # collapse = ' ' put all of the characters into a character
+paste(dtf$NameAbb, dtf$FamilyName, sep = '. ')[7]  # This is my name for academic essay cite
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**2.8**</span> Find
+
+```{r echo=TRUE}
+# grep() function in R is a built-in function that searches for a pattern match in each element of character 
+y <- c("R", "Python", "Java")
+grep("Java", y)
+for(i in 1:length(y)) {
+  print(grep(as.character(y[i]), y))
+}
+sapply(y, function(x) grep(x, y))
+
+head(table(dtf2$GivenName), 12)
+grep('Jiayi', dtf$Name, value = TRUE)
+grep('Jiayi|Guo', dtf$Name, value = TRUE)
+
+# regexpr() function is used to identify the position of the pattern in the character vector, where each element is searched separately.
+z <- c("R is fun", "R is cool", "R is awesome")
+regexpr("is", z)  # Returns include starting position, duration length, data type ...
+gregexpr("is", z)  # The gregexpr() function returns all matching positions and lengths, as a list
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**2.9**</span> Replace
+
+```{r echo=TRUE}
+# gsub()
+gsub(' ', '-', x)
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**2.10**</span> [Regular expression]{style="color:orange"}
+
+```{r echo=TRUE}
+# help(regex)
+# Find the one who has a given name with 4 letters and a family name with 4 letters
+grep('^[[:alpha:]]{4} [[:alpha:]]{4}$', dtf$Name, value = TRUE)
+
+# Here, parentheses are used to create a capturing group. A capturing group is a subexpression of a regular expression that can capture and store the matched text during matching. 
+# In this example, the capturing group is used to extract the first word from the string. Without a capturing group, the entire matched string would be replaced with \\1 instead of just the first word.
+dtf$FirstName <- gsub('^([^ ]+).+[^ ]+$', '\\1', dtf$Name)
+head(dtf)
+```
+
+```{r eval=FALSE}
+Rmarkdown 中正则表达式的基本语法如下：
+  . 匹配任意单个字符，除了换行符。
+  [ ] 匹配方括号内的任意一个字符，例如 [abc] 匹配 a 或 b 或 c。
+  [^ ] 匹配方括号外的任意一个字符，例如 [^abc] 匹配除了 a 和 b 和 c 之外的任意字符。
+  - 在方括号内表示范围，例如 [a-z] 匹配小写字母， [0-9] 匹配数字。
+  \d \D \w \W \s \S 分别匹配数字、非数字、单词字符（字母、数字和下划线）、非单词字符、空白符（空格、制表符和换行符）、非空白符。
+  \b \B ^ $ \ 分别匹配单词边界（单词和非单词之间）、非单词边界（两个单词或两个非单词之间）、字符串开头、字符串结尾、转义符（用于匹配元字符本身）。
+  ( ) | ? + * { } \ 分别匹配分组或捕获子表达式（可以用反斜杠加数字引用），选择（匹配左边或右边），零次或一次重复，一次或多次重复，零次或多次重复，指定重复次数，零宽断言（匹配位置而不是字符）。
+简单的例子，查找 Markdown 链接（[This is a link](https://www.example.com)）：
+\[([^\]]+)\]\(([^)]+)\)
+这个正则表达式可以分解为以下部分：
+  \[ 匹配左方括号
+  ([^\]]+) 匹配并捕获一个或多个不是右方括号的字符
+  \] 匹配右方括号
+  \( 匹配左圆括号
+  ([^)]+) 匹配并捕获一个或多个不是右圆括号的字符
+  \) 匹配右圆括号
+```
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**3**</span> Time data in R
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**3.1**</span> Format of time
+
+```{r echo=TRUE}
+# Check the current date
+date()
+# character
+d1 <- "2/11/1962"
+# Date/Time format, we can just directly use like "d2 + 1" to add 1 day to d2
+d2 <- Sys.Date()
+t2 <- Sys.time()
+# Check their type
+t(list(class(d1), class(d2), class(t2)))
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**3.2**</span> Numeric of date
+
+```{r echo=TRUE}
+# Use format="" to identify the character to date
+d3 <- as.Date("2/11/1962", format="%d/%m/%Y" )
+as.numeric(d3)
+d3 + 2617
+format(d3, '%Y %m %d')
+format(d3, "%Y %B %d %A")
+# Different format will have different meaning
+d4 <- as.Date( "2/11/1962", format="%m/%d/%Y" )
+d3 == d4
+```
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**3.2.1**</span> Time format codes
+
+`%Y`: Four-digit year<br> `%y`: Two-digit year<br> `%m`: Two-digit month (01\~12)<br> `%d`: Two-digit day of the month (01\~31)<br> `%H`: Hour in 24-hour format (00\~23)<br> `%M`: Two-digit minute (00\~59)<br> `%S`: Two-digit second (00\~59)<br> `%z`: Time zone offset, for example +0800<br> `%Z`: Time zone name, for example CST
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**3.3**</span> Calculating date
+
+```{r echo=TRUE}
+# import built-in data diet (The data concern a subsample of subjects drawn from larger cohort studies of the incidence of coronary heart disease (CHD))
+library('Epi')
+data("diet")
+str(diet)
+# Prepare data which we will deal with
+bdat <- diet$dox[1]
+bdat
+# Some basic calculation between dates
+bdat + 1
+
+diet$dox2 <- format(diet$dox, format="%A %d %B %Y")
+head(diet$dox2, 3)
+
+# Some advanced calculation between dates
+max(diet$dox)
+range(diet$dox)
+mean(diet$dox)
+median(diet$dox)
+diff(range(diet$dox))
+difftime(min(diet$dox), max(diet$dox), units = "weeks")  # Set unit
+
+# Epi::cal.yr() function converts the date format to numeric format
+diet2 <- Epi::cal.yr(diet)
+str(diet2)
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**3.4**</span> Set time zone & calculation
+
+```{r echo=TRUE}
+bd <- '1994-09-22 20:30:00'
+class(bd)
+bdtime <- strptime(x = bd, format = '%Y-%m-%d %H:%M:%S', tz = "Asia/Shanghai")  # Set character to time format and add a time zone
+class(bdtime)
+t(unclass(bdtime))
+bdtime$wday
+format(bdtime, format = '%d.%m.%Y')
+bdtime + 1
+# Also, some essential calculation
+bd2 <- '1995-09-01 7:30:00'
+bdtime2 <- strptime(bd2, format = '%Y-%m-%d %H:%M:%S', tz = 'Asia/Shanghai')
+bdtime2 - bdtime
+difftime(time1 = bdtime2, time2 = bdtime, units = 'secs')  # Set unit
+mean(c(bdtime, bdtime2))
+```
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**4**</span> [LaTeX]{style="color:orange"}
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**4.1**</span> Fundamental
+
+<center><img src="images/Mathematical Annotation in R.png" width="600" height="579"/></center>
+
+-   Use `$$e^{i\pi}+1=0$$` to form Euler's Law expression $$e^{i\pi}+1=0$$
+-   [Hyperlink of a CN website for more detail about LaTeX](https://blog.csdn.net/ViatorSun/article/details/82826664)
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**4.2**</span> Advanced
+
+-   Here are some additional formulas from ENV221 statistic method:<br>
+    1.  [Z-test]{style="color:orange"}:<br> The LaTex expression for Z-test is: $$Z=\frac{\overline{x}-\mu}{\frac{\sigma}{\sqrt{n}}}$$ where $\overline{x}$ is the sample mean, $\mu$ is the population mean, $\sigma$ is the population standard deviation, and $n$ is the sample size.
+    2.  [t-test]{style="color:orange"}:<br> The LaTex expression for t-test is: $$t=\frac{\overline{x}-\mu}{\frac{s}{\sqrt{n}}}$$ where $\overline{x}$ is the sample mean, $\mu$ is the population mean, $s$ is the sample standard deviation, and $n$ is the sample size.
+    3.  [F-test]{style="color:orange"}:<br> The LaTex expression for F-test is: $$F=\frac{s_1^2}{s_2^2}$$ where $s_1^2$ is the variance of the first sample and $s_2^2$ is the variance of the second sample.
+    4.  [Chi-square test]{style="color:orange"}:<br> The LaTex expression for the chi-square test is: $$\chi2=\sum_{i=1}{n}\frac{(O_i-E_i)^2}{E_i}$$ where $O_i$ represents observed values and $E_i$ represents expected values.
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**5**</span> R graph (advanced)
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**5.1**</span> R graph (advanced)Different theme of plot
+
+```{r, fig.align='center'}
+library(ggplot2)
+bw <- ggplot(CO2) + geom_point(aes(conc, uptake)) + theme_bw()
+test <- ggplot(CO2) + geom_point(aes(conc, uptake)) + theme_test()
+classic <- ggplot(CO2) + geom_point(aes(conc, uptake)) + theme_classic()
+library(patchwork)
+bw + test + classic + 
+  plot_layout(ncol = 3, widths = c(1, 1, 1), heights = c(1, 1, 1)) + 
+  plot_annotation(
+    title = expression(CO[2] * " uptake by plant type plot with different theme"),
+    tag_levels = "A"
+  )
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**5.2**</span> R graph (advanced)Math formulas with R
+
+```{r, fig.width = 8, fig.height = 4, fig.align='center'}
+head(CO2)
+# fundamental expression
+plot(CO2$conc, CO2$uptake, pch = 16, las = 1, 
+     xlab = 'CO2 concentration', ylab = 'CO2 uptake')
+# Advanced expression (Use `?plotmath` to check more details of mathematical annotation in R)
+plot(CO2$conc, CO2$uptake, pch = 16, las = 1, 
+     xlab = expression('CO'[2] * ' concentration (mL/L)'), 
+     ylab = expression('CO'[2] * ' uptake (' *mu * 'mol m'^-2 * 's'^-1 * ')'))
+# LaTeX expression
+library(latex2exp)
+plot(CO2$conc, CO2$uptake, pch = 16, las = 1, 
+     xlab = TeX('CO$_2$ concentration (mL/L)'), 
+     ylab = TeX('CO$_2$ uptake ($\\mu$mol m$^{-2}$ s$^{-1}$)'))
+text(850, 30, expression(prod(plain(P)(X == x), x)))
+```
+
+-   [Hyperlink of a CN website for more detail about Mathematical Annotation in R](https://www.cnblogs.com/kisen/p/12574830.html)
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**5.3**</span> R graph (advanced)Size and layout
+
+-   ggplot2: patchwork package is used to range the size and layout of multiply plots
+
+```{r, fig.width = 8, fig.height = 5, fig.align='center'}
+library(patchwork)
+p1 <- ggplot(airquality) + geom_boxplot(aes(as.factor(Month), Ozone))
+p2 <- ggplot(airquality) + geom_point(aes(Solar.R, Ozone))
+p3 <- ggplot(airquality) + geom_histogram(aes(Ozone))
+p1 + p2 + p3
+p1 + p2 / p3
+(p1 + p2) / p3
+(p1 + p2) / p3 + plot_annotation(tag_levels = 'A') + 
+  plot_layout(ncol = 2, widths = c(1, 1), heights = c(1, 1))  # plot_layout() function is used to define the grid layout of the composite graph.
+```
+
+-   Built-in par() function
+
+```{r}
+par(mfrow = c(2, 3))  # Set the layout by using vector c(x, y)
+plot(airquality$Solar.R, airquality$Ozone)
+hist(airquality$Solar.R)
+barplot(airquality$Month)
+plot(airquality$Solar.R, airquality$Ozone)
+hist(airquality$Solar.R)
+barplot(airquality$Month)
+```
+
+-   <span style="color:red">Built-in layout() function</span>
+
+```{r, fig.width = 8, fig.height = 5, fig.align='center'}
+# Use a matrix to store the information about layout
+mymat <- matrix(1:6, nrow = 2)
+layout(mymat)
+plot(airquality$Solar.R, airquality$Ozone)
+hist(airquality$Solar.R)
+barplot(airquality$Month)
+plot(airquality$Solar.R, airquality$Ozone)
+hist(airquality$Solar.R)
+barplot(airquality$Month)
+# Also, customize the exact layout by using some parameters like 'widths=' and 'heights=' by filling vector
+mymat <- matrix(c(1, 1:5), nrow = 2)
+mymat  # Check the matrix which was used to layout plots
+layout(mymat, widths = c(1, 1, 2), heights = c(1, 2))
+plot(airquality$Solar.R, airquality$Ozone)
+hist(airquality$Solar.R)
+barplot(airquality$Month)
+plot(airquality$Solar.R, airquality$Ozone)
+hist(airquality$Solar.R)
+# This is an example from quiz1. Also, please check the exercises to view more difficult questions
+mymat <- matrix(c(1, 2, 3, 0), nrow = 2)
+mymat  # Check the matrix which was used to layout plots
+layout(mymat, widths = c(4, 1), heights = c(2, 1))  # Set the ratio between widths and heights
+plot(iris$Sepal.Length, iris$Sepal.Width, pch=20, xlab='Sepal Length (cm)', ylab='Sepal Width (cm)', las=1)
+boxplot(iris$Sepal.Length, pch=20, las=1, horizontal=T)
+boxplot(iris$Sepal.Width, pch=20, las=2)
+```
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**6**</span> R Tidyverse
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**6.1**</span> Workflow
+
+<center>![Tidyverse workflow](images/Tidyverse workflow.png){width=75%}</center>
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**6.2**</span> Fundamental operations
+```{r}
+# Load the package
+library(tidyverse)
+# Check the members of them
+tidyverse_packages()
+```
+Core members and their function:
+
+- `ggplot2`: Creating graphics
+- `dplyr`: Data manipulation
+- `tidyr`: Get to tidy data
+- `readr`: Read rectangular data
+- `purrr`: Functional programming
+- `tibble`: Re-imagining of the data frame
+- `stringr`: Working with strings
+- `forcats`: Working with factors
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**6.3**</span> Pipe operator
+
+The pipe operator can be written as `%>%` or `|>`
+```{r}
+x <- c(0.109, 0.359, 0.63, 0.996, 0.515, 0.142, 0.017, 0.829, 0.907)
+# Method 1:
+y1 <- log(x)
+y2 <- diff(y1)
+y3 <- exp(y2)
+z <- round(y3)
+# Method 2
+z <- round(exp(diff(log(x))))
+# Pipe method
+z <- x %>% log() %>% diff() %>% exp() %>% round()
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**6.4**</span> Mutiply work by using tidyverse pipe
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**6.4.1**</span> Graph work
+```{r, fig.align='center'}
+# By using R built-in par() function and a loop
+par(mfrow = c(2, 2))
+for (i in 1:4) {
+  boxplot(iris[, i] ~ iris$Species, las = 1, xlab = 'Species', ylab = names(iris)[i])
+}
+# By using pivot_longer() function and tidyverse pipe
+iris |> pivot_longer(-Species) |> ggplot() + geom_boxplot(aes(Species, value)) + facet_wrap(name ~.)
+```
+### <span style="color:gray; font-family:Microsoft JhengHei;">**6.4.2**</span> Statistic work
+```{r}
+# base R
+dtf1_mean <- data.frame(Species = unique(iris$Species), Mean_Sepal_Length = tapply(iris$Sepal.Length, iris$Species, mean, na.rm = TRUE))
+dtf1_sd <- data.frame(Species = unique(iris$Species), SD_Sepal_Length = tapply(iris$Sepal.Length, iris$Species, sd, na.rm = TRUE))
+dtf1_median <- data.frame(Species = unique(iris$Species), Median_Sepal_Length = tapply(iris$Sepal.Length, iris$Species, median, na.rm = TRUE))
+names(dtf1_mean) <- c("Species", "Mean_Sepal_Length")
+names(dtf1_sd) <- c("Species", "SD_Sepal_Length")
+names(dtf1_median) <- c("Species", "Median_Sepal_Length")
+cbind(dtf1_mean, dtf1_sd, dtf1_median)  # Show them in one table
+# use a loop
+dtf <- data.frame(rep(NA, 3))
+for (i in 1:4) {
+  dtf1_mean <- data.frame(tapply(iris[, i], iris$Species, mean, na.rm = TRUE))
+  dtf1_sd <- data.frame(tapply(iris[, i], iris$Species, sd, na.rm = TRUE))
+  dtf1_median <- data.frame(tapply(iris[, i], iris$Species, median, na.rm = TRUE))
+  dtf1 <- cbind(dtf1_mean, dtf1_sd, dtf1_median)
+  names(dtf1) <- paste0(names(iris)[i], '.', c('mean', 'sd', 'median'))
+  dtf <- cbind(dtf, dtf1)
+}
+dtf
+# tidyverse
+dtf <- iris |> 
+  pivot_longer(-Species) |> 
+  group_by(Species, name) |> 
+  summarise(mean = mean(value, na.rm = TRUE),
+            sd   = sd(value, na.rm = TRUE),
+            median = median(value, na.rm = TRUE),
+            .groups = "drop")
+
+dtf
+```
+
+
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**6.5**</span> Tidy the dataset
+
+```{r}
+# Original dataset of table1
+table1
+# Compute rate per 10,000
+table1 %>% mutate(rate = cases / population * 10000)
+# Compute cases per year
+table1 %>% count(year, wt = cases)
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**6.6**</span> Conversions the dataframe type
+
+```{r}
+# Original dataset of table2
+table2
+# Divided the type into cases and population
+table2 %>% pivot_wider(names_from = type, values_from = count)
+# Original dataset of table3
+table3
+# Separate the rate into cases and population
+table3 %>% separate(col = rate, into = c("cases", "population"), sep = "/")
+# Original dataset of table4a and table4b
+cbind(table4a, table4b)
+# Put table4a and table4b together to form a new table with both of their dataset
+tidy4a_changed <- table4a %>% pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "cases")
+tidy4b_changed <- table4b %>% pivot_longer(c(`1999`, `2000`), names_to = "year", values_to = "population")
+left_join(tidy4a_changed, tidy4b_changed)   ## Kind of like MySQL
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**6.7**</span> Find missing observations
+
+```{r}
+library(openair)
+library(tidyverse)
+# create a function to count missing observations
+sum_of_na <- function(x){
+  sum(is.na(x))
+}
+mydata %>% summarise(
+  across(everything(), sum_of_na)
+)
+```
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**7**</span> ANOVA Post-hoc tests
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**7.1**</span> Post-hoc tests
+
+Background informations: A biologist studies the weight gain of male lab rats on diets over a 4-week period. Three different diets are applied.
+
+```{r, fig.width = 6, fig.height = 4, fig.align='center'}
+# Statistic anlysis
+(dtf <- data.frame(diet1 = c(90, 95, 100),
+                   diet2 = c(120, 125, 130),
+                   diet3 = c(125, 130, 135)))
+dtf2 <- stack(dtf)
+names(dtf2) <- c("wg", "diet")
+wg_aov <- aov(wg ~ diet, data = dtf2)
+summary(wg_aov)
+# Visualization
+library(ggplot2)
+ggplot(dtf2) + geom_boxplot(aes(wg, diet))
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**7.2**</span> Fisher’s Least Significant Difference (LSD) Test
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**7.2.1**</span> Concept
+
+Pair-wise comparisons of all the groups based on the $t$-test:
+$$L S D=t_{\alpha / 2} \sqrt{S_{p}^{2}\left(\frac{1}{n_1}+\frac{1}{n_2}+\cdots\right)}$$
+$$S_{p}^{2}=\frac{\left(n_{1}-1\right) S_{1}^{2}+\left(n_{2}-1\right) S_{2}^{2}+\left(n_{3}-1\right) S_{3}^{2}+\cdots}{\left(n_{1}-1\right)+\left(n_{2}-1\right)+\left(n_{3}-1\right)+\cdots}$$
+
+- $S_{p}^{2}:$: pooled standard deviation (some use Mean Standard Error)
+- $t_{\alpha / 2}: \mathrm{t}$: $t$ critical value at $\alpha=0.025$
+- Degree of freedom: $N - k$
+    - $N$: total observations
+    - $k$: number of factors
+- If $\left|\bar{x}_{1}-\bar{x}_{2}\right|>L S D$, then the difference of $x_1$ group and $x_2$ group is significant at $\alpha$.
+- In multiple comparisons ($k$ factors), the number of comparison needed is: $\frac{k(k-1)}{2}$
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**7.2.2**</span> Example
+(Rats on diets in the previous section)
+
+1. Step by step
+```{r}
+# Calculate LSD
+n <- nrow(dtf2)
+k <- nlevels(dtf2$diet)
+dfree <- n - k
+t_critical <- qt(0.05/2, df = dfree, lower.tail = FALSE)
+sp2 <- sum((3 - 1) * apply(dtf, 2, sd) ^ 2)/ dfree
+LSD <- t_critical * sqrt(sp2 * (1/3 + 1/3 + 1/3))
+# Calculate |mean_x1-mean_x2|
+dtf_groupmean <- colMeans(dtf)
+paired_groupmean <- combn(dtf_groupmean, 2)
+paired_groupmean[2, ] - paired_groupmean[1, ]
+```
+2. Step by step by using loop
+```{r}
+library(dplyr)
+dtf_sm <- dtf2 |> 
+  group_by(diet) |> 
+  summarise(n = length(wg), sd = sd(wg), mean = mean(wg))
+sp2 <- sum((dtf_sm$n - 1) * dtf_sm$sd ^ 2 )/ dfree
+LSD <- t_critical * sqrt(sp2 * sum(1 / dtf_sm$n))
+paired_groupmean <- combn(dtf_sm$mean, 2)
+paired_groupmean[2, ] - paired_groupmean[1, ]
+```
+3. One step
+```{r, fig.width = 6, fig.height = 4, fig.align='center'}
+library(agricolae)
+# Statistic analysis
+LSD.test(wg_aov, "diet", p.adj = "bonferroni") |> print()
+# Visualization
+LSD.test(wg_aov, "diet", p.adj = "bonferroni") |> plot()
+box()
+```
+Conclusion: At $\alpha = 0.05$, Diet 2 and Diet 3 are significantly different from Diet 1 in the mean weight gain, while Diet 2 is not significantly different from Diet 3.
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**7.3**</span> Bonferroni t-test
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**7.3.1**</span> Concept
+
+A multiple-comparison post-hoc test, which sets the significance cut off at $\alpha/m$ for each comparison, where $m$ represents [the <u>number</u> of comparisons we apply]{style="color:red"}.
+
+[Overall chance of making a Type I error:]{style="color:#880000"}
+```{r}
+m <- 1:100
+siglevel <- 0.05
+Type_I <- 1 - (1 - (siglevel / m)) ^ m
+Type_I
+```
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**7.3.2**</span> Example
+(Rats on diets in the previous section)
+
+1. Step by step
+```{r}
+m <- choose(nlevels(dtf2$diet), 2)  # 1:2 or 1:3 or 2:3
+alpha_cor <- 0.05 / m
+```
+```{r}
+# Pairwise comparison between diet1 and diet2
+t.test(wg ~ diet, dtf2, subset = diet %in% c("diet1", "diet2"), conf.level = 1 - alpha_cor)
+# Pairwise comparison between diet1 and diet3
+t.test(wg ~ diet, dtf2, subset = diet %in% c("diet1", "diet3"), conf.level = 1 - alpha_cor)
+# Pairwise comparison between diet2 and diet3
+t.test(wg ~ diet, dtf2, subset = diet %in% c("diet2", "diet3"), conf.level = 1 - alpha_cor)
+```
+2. One step
+```{r}
+(diet_pt <- pairwise.t.test(dtf2$wg, dtf2$diet, pool.sd = FALSE,var.equal = TRUE, p.adj = "none"))
+diet_pt$p.value < 0.05
+```
+Conclusion: At $\alpha = 0.05$, Diet 2 and Diet 3 are significantly different from Diet 1 in the mean weight gain, while Diet 2 is not significantly different from Diet 3.
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**8**</span> MANOVA, ANCOVA, MANCOVA
+
+To be continue...
+
+
+
+
+
+
+
+
+
+
+# [SessionInfo:]{style="color:green"}
+
+```{r echo=FALSE}
+sessionInfo()
+```

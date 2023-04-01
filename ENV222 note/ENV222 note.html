@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="TC-tea">
+
+<title>ENV222 NOTE</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="ENV222 note_files/libs/clipboard/clipboard.min.js"></script>
+<script src="ENV222 note_files/libs/quarto-html/quarto.js"></script>
+<script src="ENV222 note_files/libs/quarto-html/popper.min.js"></script>
+<script src="ENV222 note_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="ENV222 note_files/libs/quarto-html/anchor.min.js"></script>
+<link href="ENV222 note_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="ENV222 note_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="ENV222 note_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="ENV222 note_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="ENV222 note_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#r-markdown-syntax" id="toc-r-markdown-syntax" class="nav-link active" data-scroll-target="#r-markdown-syntax"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>1</strong></span> R-markdown syntax</a>
+  <ul class="collapse">
+  <li><a href="#fundamental" id="toc-fundamental" class="nav-link" data-scroll-target="#fundamental"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>1.1</strong></span> Fundamental</a></li>
+  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>1.2</strong></span> Advanced</a></li>
+  </ul></li>
+  <li><a href="#basic-r-charaters" id="toc-basic-r-charaters" class="nav-link" data-scroll-target="#basic-r-charaters"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2</strong></span> Basic R charaters</a>
+  <ul class="collapse">
+  <li><a href="#check-the-data-type" id="toc-check-the-data-type" class="nav-link" data-scroll-target="#check-the-data-type"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.1</strong></span> Check the data type</a></li>
+  <li><a href="#index-to-maximum-and-minimum-values" id="toc-index-to-maximum-and-minimum-values" class="nav-link" data-scroll-target="#index-to-maximum-and-minimum-values"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.2</strong></span> Index to maximum and minimum values</a></li>
+  <li><a href="#capital-and-small-letter" id="toc-capital-and-small-letter" class="nav-link" data-scroll-target="#capital-and-small-letter"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.3</strong></span> Capital and small letter</a></li>
+  <li><a href="#split-string" id="toc-split-string" class="nav-link" data-scroll-target="#split-string"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.4</strong></span> Split string</a></li>
+  <li><a href="#separate-column" id="toc-separate-column" class="nav-link" data-scroll-target="#separate-column"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.5</strong></span> Separate column</a></li>
+  <li><a href="#extract" id="toc-extract" class="nav-link" data-scroll-target="#extract"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.6</strong></span> Extract</a></li>
+  <li><a href="#connect" id="toc-connect" class="nav-link" data-scroll-target="#connect"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.7</strong></span> Connect</a></li>
+  <li><a href="#find" id="toc-find" class="nav-link" data-scroll-target="#find"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.8</strong></span> Find</a></li>
+  <li><a href="#replace" id="toc-replace" class="nav-link" data-scroll-target="#replace"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.9</strong></span> Replace</a></li>
+  <li><a href="#regular-expression" id="toc-regular-expression" class="nav-link" data-scroll-target="#regular-expression"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.10</strong></span> <span style="color:orange">Regular expression</span></a></li>
+  </ul></li>
+  <li><a href="#time-data-in-r" id="toc-time-data-in-r" class="nav-link" data-scroll-target="#time-data-in-r"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3</strong></span> Time data in R</a>
+  <ul class="collapse">
+  <li><a href="#format-of-time" id="toc-format-of-time" class="nav-link" data-scroll-target="#format-of-time"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3.1</strong></span> Format of time</a></li>
+  <li><a href="#numeric-of-date" id="toc-numeric-of-date" class="nav-link" data-scroll-target="#numeric-of-date"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3.2</strong></span> Numeric of date</a>
+  <ul class="collapse">
+  <li><a href="#time-format-codes" id="toc-time-format-codes" class="nav-link" data-scroll-target="#time-format-codes"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3.2.1</strong></span> Time format codes</a></li>
+  </ul></li>
+  <li><a href="#calculating-date" id="toc-calculating-date" class="nav-link" data-scroll-target="#calculating-date"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3.3</strong></span> Calculating date</a></li>
+  <li><a href="#set-time-zone-calculation" id="toc-set-time-zone-calculation" class="nav-link" data-scroll-target="#set-time-zone-calculation"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3.4</strong></span> Set time zone &amp; calculation</a></li>
+  </ul></li>
+  <li><a href="#latex" id="toc-latex" class="nav-link" data-scroll-target="#latex"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>4</strong></span> <span style="color:orange">LaTeX</span></a>
+  <ul class="collapse">
+  <li><a href="#fundamental-1" id="toc-fundamental-1" class="nav-link" data-scroll-target="#fundamental-1"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>4.1</strong></span> Fundamental</a></li>
+  <li><a href="#advanced-1" id="toc-advanced-1" class="nav-link" data-scroll-target="#advanced-1"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>4.2</strong></span> Advanced</a></li>
+  </ul></li>
+  <li><a href="#r-graph-advanced" id="toc-r-graph-advanced" class="nav-link" data-scroll-target="#r-graph-advanced"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>5</strong></span> R graph (advanced)</a>
+  <ul class="collapse">
+  <li><a href="#r-graph-advanceddifferent-theme-of-plot" id="toc-r-graph-advanceddifferent-theme-of-plot" class="nav-link" data-scroll-target="#r-graph-advanceddifferent-theme-of-plot"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>5.1</strong></span> R graph (advanced)Different theme of plot</a></li>
+  <li><a href="#r-graph-advancedmath-formulas-with-r" id="toc-r-graph-advancedmath-formulas-with-r" class="nav-link" data-scroll-target="#r-graph-advancedmath-formulas-with-r"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>5.2</strong></span> R graph (advanced)Math formulas with R</a></li>
+  <li><a href="#r-graph-advancedsize-and-layout" id="toc-r-graph-advancedsize-and-layout" class="nav-link" data-scroll-target="#r-graph-advancedsize-and-layout"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>5.3</strong></span> R graph (advanced)Size and layout</a></li>
+  </ul></li>
+  <li><a href="#r-tidyverse" id="toc-r-tidyverse" class="nav-link" data-scroll-target="#r-tidyverse"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6</strong></span> R Tidyverse</a>
+  <ul class="collapse">
+  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.1</strong></span> Workflow</a></li>
+  <li><a href="#fundamental-operations" id="toc-fundamental-operations" class="nav-link" data-scroll-target="#fundamental-operations"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.2</strong></span> Fundamental operations</a></li>
+  <li><a href="#pipe-operator" id="toc-pipe-operator" class="nav-link" data-scroll-target="#pipe-operator"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.3</strong></span> Pipe operator</a></li>
+  <li><a href="#mutiply-work-by-using-tidyverse-pipe" id="toc-mutiply-work-by-using-tidyverse-pipe" class="nav-link" data-scroll-target="#mutiply-work-by-using-tidyverse-pipe"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.4</strong></span> Mutiply work by using tidyverse pipe</a>
+  <ul class="collapse">
+  <li><a href="#graph-work" id="toc-graph-work" class="nav-link" data-scroll-target="#graph-work"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.4.1</strong></span> Graph work</a></li>
+  <li><a href="#statistic-work" id="toc-statistic-work" class="nav-link" data-scroll-target="#statistic-work"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.4.2</strong></span> Statistic work</a></li>
+  </ul></li>
+  <li><a href="#tidy-the-dataset" id="toc-tidy-the-dataset" class="nav-link" data-scroll-target="#tidy-the-dataset"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.5</strong></span> Tidy the dataset</a></li>
+  <li><a href="#conversions-the-dataframe-type" id="toc-conversions-the-dataframe-type" class="nav-link" data-scroll-target="#conversions-the-dataframe-type"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.6</strong></span> Conversions the dataframe type</a></li>
+  <li><a href="#find-missing-observations" id="toc-find-missing-observations" class="nav-link" data-scroll-target="#find-missing-observations"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.7</strong></span> Find missing observations</a></li>
+  </ul></li>
+  <li><a href="#anova-post-hoc-tests" id="toc-anova-post-hoc-tests" class="nav-link" data-scroll-target="#anova-post-hoc-tests"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7</strong></span> ANOVA Post-hoc tests</a>
+  <ul class="collapse">
+  <li><a href="#post-hoc-tests" id="toc-post-hoc-tests" class="nav-link" data-scroll-target="#post-hoc-tests"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.1</strong></span> Post-hoc tests</a></li>
+  <li><a href="#fishers-least-significant-difference-lsd-test" id="toc-fishers-least-significant-difference-lsd-test" class="nav-link" data-scroll-target="#fishers-least-significant-difference-lsd-test"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.2</strong></span> Fisher’s Least Significant Difference (LSD) Test</a>
+  <ul class="collapse">
+  <li><a href="#concept" id="toc-concept" class="nav-link" data-scroll-target="#concept"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.2.1</strong></span> Concept</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.2.2</strong></span> Example</a></li>
+  </ul></li>
+  <li><a href="#bonferroni-t-test" id="toc-bonferroni-t-test" class="nav-link" data-scroll-target="#bonferroni-t-test"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.3</strong></span> Bonferroni t-test</a>
+  <ul class="collapse">
+  <li><a href="#concept-1" id="toc-concept-1" class="nav-link" data-scroll-target="#concept-1"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.3.1</strong></span> Concept</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.3.2</strong></span> Example</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#manova-ancova-mancova" id="toc-manova-ancova-mancova" class="nav-link" data-scroll-target="#manova-ancova-mancova"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>8</strong></span> MANOVA, ANCOVA, MANCOVA</a></li>
+  <li><a href="#sessioninfo" id="toc-sessioninfo" class="nav-link" data-scroll-target="#sessioninfo"><span style="color:green">SessionInfo:</span></a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>ENV222 NOTE</strong></h1>
+<p class="subtitle lead"><em>R in statistics</em></p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>TC-tea </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023.04.01</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  background-color: white;
+  color: black;
+}
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+/* Add this CSS */
+#myBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: lightgray;
+}
+/* Add this CSS */
+#myBtn:before {
+    content:"☀";
+}
+/* Add this CSS */
+.dark-mode #myBtn:before {
+    content:"🌙";
+}
+</style>
+
+
+<button id="myBtn" onclick="myFunction()">
+</button>
+<script>
+function myFunction() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
+
+<a href="#" id="back-to-top" title="Back to top">^</a>
+<style>
+    #back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: #fff;
+        background-color: #000;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+    }
+</style>
+<p>👉🏻<a href="../ENV222%20exercise/ENV222%20exercise.html">Click to enter the exercise section</a></p>
+<section id="r-markdown-syntax" class="level1">
+<h1><span style="color:gray; font-family:Microsoft JhengHei;"><strong>1</strong></span> R-markdown syntax</h1>
+<section id="fundamental" class="level2">
+<h2 class="anchored" data-anchor-id="fundamental"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>1.1</strong></span> Fundamental</h2>
+<ul>
+<li><p>Subscript by Rmarkdown: Use <code>PM~2.5~</code> to form PM<sub>2.5</sub>. <br>Subscript by html: <code>log&lt;sub&gt;2&lt;/sub&gt;</code> will be displayed as log<sub>2</sub>.<br></p></li>
+<li><p>Superscript by Rmarkdown: Use <code>R^2^</code> to form R<sup>2</sup>. <br>Superscript by html: <code>2&lt;sup&gt;n&lt;/sup&gt;</code> will be displayed as 2<sup>n</sup>.<br></p></li>
+<li><p>Use <code>$E = mc^2$</code> to form <span class="math inline">\(E = mc^2\)</span><br></p></li>
+<li><p>Use <code>[Link of XJTLU](http://xjtlu.edu.cn)</code> to form <a href="https://www.xjtlu.edu.cn/en/">Link of XJTLU</a><br></p></li>
+<li><p>Use <code>&lt;center&gt;&lt;img src="images/rstudio-qmd-how-it-works.png" width="1400" height="257"/&gt;</code> or <code>&lt;center&gt; ![rstudio qmd how it works](images/rstudio-qmd-how-it-works.png){width=100%}</code> to form<br></p>
+<center>
+<p><img src="images/rstudio-qmd-how-it-works.png" class="img-fluid" style="width:100.0%" alt="rstudio qmd how it works"><br></p></center></li>
+<li><p>Use something like <code>{r, fig.width = 6, fig.height = 4, fig.align='center'}</code> in front of the code chunk to change the output graphics</p></li>
+<li><p>Also, use<code>{r, XXX-Plot, fig.cap="XXX-Plot"}</code> in the front of code chunk to add a caption of this figure</p></li>
+<li><p>Use something like<code>&lt;span style="color:red; font-weight:bold; font-size:16px; font-family:Tahoma;"&gt;sentence&lt;/span&gt;</code> to change the properties of text</p></li>
+<li><p>Use<br> <code>| Name | Math | English |</code><br> <code>|:----:|:-----|--------:|</code><br> <code>| Tom  | 93   |     100 |</code><br> <code>| Mary | 60   |      90 |</code><br> to form<br></p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Name</th>
+<th style="text-align: left;">Math</th>
+<th style="text-align: right;">English</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Tom</td>
+<td style="text-align: left;">93</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mary</td>
+<td style="text-align: left;">60</td>
+<td style="text-align: right;">90</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Or use</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Math =</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">90</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">English =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">95</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">"Tom"</span>, <span class="st">"Mary"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">format =</span> <span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Math</th>
+<th style="text-align: right;">English</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Tom</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">85</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mary</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">95</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Use</li>
+</ul>
+<pre><code>- 1. 
+- 2. 
+    - 1.
+    - 2.
+- 3.</code></pre>
+<p>to form sub-rank like this below:<br></p>
+<ul>
+<li><ol type="1">
+<li></li>
+</ol></li>
+<li><ol start="2" type="1">
+<li></li>
+</ol>
+<ul>
+<li><ol type="1">
+<li></li>
+</ol></li>
+<li><ol start="2" type="1">
+<li></li>
+</ol></li>
+</ul></li>
+<li><ol start="3" type="1">
+<li></li>
+</ol></li>
+</ul>
+</section>
+<section id="advanced" class="level2">
+<h2 class="anchored" data-anchor-id="advanced"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>1.2</strong></span> Advanced</h2>
+<ul>
+<li>Numbering, caption, and cross-reference of R-plots in academic paper <a href="https://pzhao.org/openr/R-graphs-advanced.html">Click to see the detail in ENV222 Week5-5.2</a></li>
+</ul>
+</section>
+</section>
+<section id="basic-r-charaters" class="level1">
+<h1><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2</strong></span> Basic R charaters</h1>
+<section id="check-the-data-type" class="level2">
+<h2 class="anchored" data-anchor-id="check-the-data-type"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.1</strong></span> Check the data type</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import dataset</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">'The world is on the verge of being flipped topsy-turvy.'</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dtf <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'data/student_names.csv'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dtf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Name Prgrm
+1   Yuzhou Liu   Bio
+2 Penghui Wang   Bio
+3     Ziang Li   Eco
+4 Youcheng Jin   Bio
+5    Yuge Yang   Bio
+6  Yutian Song   Eco</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data type</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># length of the dataset</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># length of the sub dataset</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 55</code></pre>
+</div>
+</div>
+</section>
+<section id="index-to-maximum-and-minimum-values" class="level2">
+<h2 class="anchored" data-anchor-id="index-to-maximum-and-minimum-values"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.2</strong></span> Index to maximum and minimum values</h2>
+<ul>
+<li>Find the longest name in <span style="color:green"><em>student_names.csv</em></span>, <code>which.max</code> or <code>which.min</code> is used to find the index of the (first) minimum or maximum of a numeric (or logical) vector</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>name_n <span class="ot">&lt;-</span> <span class="fu">nchar</span>(dtf<span class="sc">$</span>Name)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>name_nmax <span class="ot">&lt;-</span> <span class="fu">which.max</span>(name_n)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dtf<span class="sc">$</span>Name[name_nmax]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Iyan Hafiz Bin Mohamed Faizel"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dtf<span class="sc">$</span>Name[<span class="fu">which.max</span>(<span class="fu">nchar</span>((dtf<span class="sc">$</span>Name)))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Iyan Hafiz Bin Mohamed Faizel"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>dtf<span class="sc">$</span>Name <span class="sc">%&gt;%</span> <span class="fu">nchar</span>() <span class="sc">%&gt;%</span> <span class="fu">which.max</span>() <span class="sc">%&gt;%</span> dtf<span class="sc">$</span>Name[.]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Iyan Hafiz Bin Mohamed Faizel"</code></pre>
+</div>
+</div>
+</section>
+<section id="capital-and-small-letter" class="level2">
+<h2 class="anchored" data-anchor-id="capital-and-small-letter"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.3</strong></span> Capital and small letter</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tolower() toupper()</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>(xupper <span class="ot">&lt;-</span> <span class="fu">toupper</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "THE WORLD IS ON THE VERGE OF BEING FLIPPED TOPSY-TURVY."</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(dtf<span class="sc">$</span>pro <span class="ot">&lt;-</span> <span class="fu">tolower</span>(dtf<span class="sc">$</span>Prgrm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "bio" "bio" "eco" "bio" "bio" "eco" "bio" "bio" "eco" "bio" "eco" "bio"
+[13] "bio" "env" "bio" "bio" "bio" "env" "bio" "env" "bio" "bio" "bio" "bio"
+[25] "eco" "eco" "env" "bio" "bio" "bio" "bio" "env" "bio" "bio" "bio" "bio"
+[37] "bio" "eco" "eco" "bio" "bio" "bio" "bio" "bio" "bio" "bio" "bio" "eco"
+[49] "bio" "bio" "env" "eco" "eco" "bio" "env" "env" "env"</code></pre>
+</div>
+</div>
+</section>
+<section id="split-string" class="level2">
+<h2 class="anchored" data-anchor-id="split-string"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.4</strong></span> Split string</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># strsplit()</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>x_word <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(xupper, <span class="st">' '</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x_word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If you want to extract the first element in the list, you need to use double brackets [[]], and if you want to extract the first sublist in the list, use single brackets []</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>x_word1 <span class="ot">&lt;-</span> x_word[[<span class="dv">1</span>]]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x_word1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(x_word1)  <span class="co"># Form a table which involved the frequency of each char acter</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x_word1
+       BEING      FLIPPED           IS           OF           ON          THE 
+           1            1            1            1            1            2 
+TOPSY-TURVY.        VERGE        WORLD 
+           1            1            1 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>x_word1[<span class="sc">!</span><span class="fu">duplicated</span>(x_word1)]  <span class="co"># Find the distinct characters in the list by use duplicated() function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "THE"          "WORLD"        "IS"           "ON"           "VERGE"       
+[6] "OF"           "BEING"        "FLIPPED"      "TOPSY-TURVY."</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(x_word1)  <span class="co"># Other way yo detect the distinct characters</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "THE"          "WORLD"        "IS"           "ON"           "VERGE"       
+[6] "OF"           "BEING"        "FLIPPED"      "TOPSY-TURVY."</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x_word, length)  <span class="co"># The output of the lapply() function is a list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x_word, length)  <span class="co"># The output of the sapply() function is a vector or a matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x_word, nchar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]
+ [1,]    3
+ [2,]    5
+ [3,]    2
+ [4,]    2
+ [5,]    3
+ [6,]    5
+ [7,]    2
+ [8,]    5
+ [9,]    7
+[10,]   12</code></pre>
+</div>
+</div>
+</section>
+<section id="separate-column" class="level2">
+<h2 class="anchored" data-anchor-id="separate-column"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.5</strong></span> Separate column</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># separate() is a function in the tidyr package that can be used to split a column in a data box into multiple columns</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'tidyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:magrittr':
+
+    extract</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>dtf2 <span class="ot">&lt;-</span> <span class="fu">separate</span>(dtf, Name, <span class="fu">c</span>(<span class="st">"GivenName"</span>, <span class="st">"LastName"</span>), <span class="at">sep =</span> <span class="st">' '</span>)  <span class="co"># separate(data, col, into, sep)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Expected 2 pieces. Additional pieces discarded in 3 rows [8, 9, 57].</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>dtf<span class="sc">$</span>FamilyName <span class="ot">&lt;-</span> dtf2<span class="sc">$</span>LastName</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dtf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Name Prgrm pro FamilyName
+1   Yuzhou Liu   Bio bio        Liu
+2 Penghui Wang   Bio bio       Wang
+3     Ziang Li   Eco eco         Li
+4 Youcheng Jin   Bio bio        Jin
+5    Yuge Yang   Bio bio       Yang
+6  Yutian Song   Eco eco       Song</code></pre>
+</div>
+</div>
+</section>
+<section id="extract" class="level2">
+<h2 class="anchored" data-anchor-id="extract"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.6</strong></span> Extract</h2>
+<p>The world is <span style="color:red">on</span> the verge of being flipped topsy-turvy.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># substr() is a built-in function in R that can be used to extract or replace substrings from a character vector</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(x, <span class="dv">13</span>, <span class="dv">15</span>)  <span class="co"># substr(x, start, stop)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] " on"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>dtf<span class="sc">$</span>NameAbb <span class="ot">&lt;-</span> <span class="fu">substr</span>(dtf<span class="sc">$</span>Name, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dtf, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Name Prgrm pro FamilyName NameAbb
+1   Yuzhou Liu   Bio bio        Liu       Y
+2 Penghui Wang   Bio bio       Wang       P
+3     Ziang Li   Eco eco         Li       Z</code></pre>
+</div>
+</div>
+</section>
+<section id="connect" class="level2">
+<h2 class="anchored" data-anchor-id="connect"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.7</strong></span> Connect</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># paste() function can convert multiple objects into character vectors and concatenate them</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(x, <span class="st">'&lt;end&gt;'</span>, <span class="at">sep =</span> <span class="st">' '</span>)  <span class="co"># paste(x1, x2,... sep, collapse)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The world is on the verge of being flipped topsy-turvy. &lt;end&gt;"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(dtf<span class="sc">$</span>NameAbb, <span class="st">'.'</span>, <span class="at">sep =</span> <span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Y." "P." "Z." "Y." "Y." "Y." "H." "A." "E." "J." "Y." "M." "Y." "Y." "X."
+[16] "Z." "W." "J." "Q." "Y." "F." "Y." "Z." "M." "Z." "S." "X." "J." "R." "Z."
+[31] "Y." "X." "Z." "Y." "Q." "Y." "Y." "M." "Q." "J." "Y." "X." "M." "Q." "Y."
+[46] "P." "Y." "J." "L." "Y." "Q." "H." "Z." "H." "J." "Y." "I."</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(dtf<span class="sc">$</span>NameAbb, <span class="at">collapse =</span> <span class="st">' '</span>)  <span class="co"># collapse = ' ' put all of the characters into a character</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Y P Z Y Y Y H A E J Y M Y Y X Z W J Q Y F Y Z M Z S X J R Z Y X Z Y Q Y Y M Q J Y X M Q Y P Y J L Y Q H Z H J Y I"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(dtf<span class="sc">$</span>NameAbb, dtf<span class="sc">$</span>FamilyName, <span class="at">sep =</span> <span class="st">'. '</span>)[<span class="dv">7</span>]  <span class="co"># This is my name for academic essay cite</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "H. Zhu"</code></pre>
+</div>
+</div>
+</section>
+<section id="find" class="level2">
+<h2 class="anchored" data-anchor-id="find"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.8</strong></span> Find</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grep() function in R is a built-in function that searches for a pattern match in each element of character </span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"Python"</span>, <span class="st">"Java"</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"Java"</span>, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(y)) {</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">grep</span>(<span class="fu">as.character</span>(y[i]), y))</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1
+[1] 2
+[1] 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(y, <span class="cf">function</span>(x) <span class="fu">grep</span>(x, y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     R Python   Java 
+     1      2      3 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">table</span>(dtf2<span class="sc">$</span>GivenName), <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+      Adriel        Elina       Fengyi        Haode       Hongli Huangtianchi 
+           1            1            1            1            1            1 
+        Iyan       Jiajie       Jiawei        Jiayi      Jingyun       Jiumei 
+           1            1            1            2            1            1 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">'Jiayi'</span>, dtf<span class="sc">$</span>Name, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Jiayi Chen" "Jiayi Guo" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">'Jiayi|Guo'</span>, dtf<span class="sc">$</span>Name, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Jiayi Chen" "Fengyi Guo" "Jiayi Guo" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># regexpr() function is used to identify the position of the pattern in the character vector, where each element is searched separately.</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"R is fun"</span>, <span class="st">"R is cool"</span>, <span class="st">"R is awesome"</span>)</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">regexpr</span>(<span class="st">"is"</span>, z)  <span class="co"># Returns include starting position, duration length, data type ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 3 3
+attr(,"match.length")
+[1] 2 2 2
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gregexpr</span>(<span class="st">"is"</span>, z)  <span class="co"># The gregexpr() function returns all matching positions and lengths, as a list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 3
+attr(,"match.length")
+[1] 2
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE
+
+[[2]]
+[1] 3
+attr(,"match.length")
+[1] 2
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE
+
+[[3]]
+[1] 3
+attr(,"match.length")
+[1] 2
+attr(,"index.type")
+[1] "chars"
+attr(,"useBytes")
+[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="replace" class="level2">
+<h2 class="anchored" data-anchor-id="replace"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.9</strong></span> Replace</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gsub()</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">' '</span>, <span class="st">'-'</span>, x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "The-world-is-on-the-verge-of-being-flipped-topsy-turvy."</code></pre>
+</div>
+</div>
+</section>
+<section id="regular-expression" class="level2">
+<h2 class="anchored" data-anchor-id="regular-expression"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>2.10</strong></span> <span style="color:orange">Regular expression</span></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># help(regex)</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the one who has a given name with 4 letters and a family name with 4 letters</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">'^[[:alpha:]]{4} [[:alpha:]]{4}$'</span>, dtf<span class="sc">$</span>Name, <span class="at">value =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Yuge Yang" "Ziyu Yuan" "Qian Chen" "Ying Zhou"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here, parentheses are used to create a capturing group. A capturing group is a subexpression of a regular expression that can capture and store the matched text during matching. </span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co"># In this example, the capturing group is used to extract the first word from the string. Without a capturing group, the entire matched string would be replaced with \\1 instead of just the first word.</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>dtf<span class="sc">$</span>FirstName <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">'^([^ ]+).+[^ ]+$'</span>, <span class="st">'</span><span class="sc">\\</span><span class="st">1'</span>, dtf<span class="sc">$</span>Name)</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dtf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Name Prgrm pro FamilyName NameAbb FirstName
+1   Yuzhou Liu   Bio bio        Liu       Y    Yuzhou
+2 Penghui Wang   Bio bio       Wang       P   Penghui
+3     Ziang Li   Eco eco         Li       Z     Ziang
+4 Youcheng Jin   Bio bio        Jin       Y  Youcheng
+5    Yuge Yang   Bio bio       Yang       Y      Yuge
+6  Yutian Song   Eco eco       Song       Y    Yutian</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>Rmarkdown 中正则表达式的基本语法如下：</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>  . 匹配任意单个字符，除了换行符。</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  [ ] 匹配方括号内的任意一个字符，例如 [abc] 匹配 a 或 b 或 c。</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>  [<span class="sc">^</span> ] 匹配方括号外的任意一个字符，例如 [<span class="sc">^</span>abc] 匹配除了 a 和 b 和 c 之外的任意字符。</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span> 在方括号内表示范围，例如 [a<span class="sc">-</span>z] 匹配小写字母， [<span class="dv">0-9</span>] 匹配数字。</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>  \d \D \w \W \s \S 分别匹配数字、非数字、单词字符（字母、数字和下划线）、非单词字符、空白符（空格、制表符和换行符）、非空白符。</span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>  \b \B <span class="sc">^</span> <span class="er">$</span> \ 分别匹配单词边界（单词和非单词之间）、非单词边界（两个单词或两个非单词之间）、字符串开头、字符串结尾、转义符（用于匹配元字符本身）。</span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>  ( ) <span class="sc">|</span> ? <span class="sc">+</span> <span class="er">*</span> { } \ 分别匹配分组或捕获子表达式（可以用反斜杠加数字引用），选择（匹配左边或右边），零次或一次重复，一次或多次重复，零次或多次重复，指定重复次数，零宽断言（匹配位置而不是字符）。</span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>简单的例子，查找 Markdown 链接（[This is a link](https<span class="sc">:</span><span class="er">//</span>www.example.com)）：</span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>\[([<span class="sc">^</span>\]]<span class="sc">+</span>)\]\(([<span class="sc">^</span>)]<span class="sc">+</span>)\<span class="er">)</span></span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>这个正则表达式可以分解为以下部分：</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>  \[ 匹配左方括号</span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>  ([<span class="sc">^</span>\]]<span class="sc">+</span>) 匹配并捕获一个或多个不是右方括号的字符</span>
+<span id="cb78-14"><a href="#cb78-14" aria-hidden="true" tabindex="-1"></a>  \] 匹配右方括号</span>
+<span id="cb78-15"><a href="#cb78-15" aria-hidden="true" tabindex="-1"></a>  \( 匹配左圆括号</span>
+<span id="cb78-16"><a href="#cb78-16" aria-hidden="true" tabindex="-1"></a>  ([<span class="sc">^</span>)]<span class="sc">+</span>) 匹配并捕获一个或多个不是右圆括号的字符</span>
+<span id="cb78-17"><a href="#cb78-17" aria-hidden="true" tabindex="-1"></a>  \<span class="er">)</span> 匹配右圆括号</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="time-data-in-r" class="level1">
+<h1><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3</strong></span> Time data in R</h1>
+<section id="format-of-time" class="level2">
+<h2 class="anchored" data-anchor-id="format-of-time"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3.1</strong></span> Format of time</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the current date</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Sat Apr  1 22:00:30 2023"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># character</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="st">"2/11/1962"</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Date/Time format, we can just directly use like "d2 + 1" to add 1 day to d2</span></span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>t2 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check their type</span></span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">list</span>(<span class="fu">class</span>(d1), <span class="fu">class</span>(d2), <span class="fu">class</span>(t2)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]        [,2]   [,3]       
+[1,] "character" "Date" character,2</code></pre>
+</div>
+</div>
+</section>
+<section id="numeric-of-date" class="level2">
+<h2 class="anchored" data-anchor-id="numeric-of-date"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3.2</strong></span> Numeric of date</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use format="" to identify the character to date</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>d3 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2/11/1962"</span>, <span class="at">format=</span><span class="st">"%d/%m/%Y"</span> )</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(d3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2617</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>d3 <span class="sc">+</span> <span class="dv">2617</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1970-01-01"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(d3, <span class="st">'%Y %m %d'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1962 11 02"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(d3, <span class="st">"%Y %B %d %A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1962 十一月 02 星期五"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Different format will have different meaning</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>d4 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>( <span class="st">"2/11/1962"</span>, <span class="at">format=</span><span class="st">"%m/%d/%Y"</span> )</span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>d3 <span class="sc">==</span> d4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<section id="time-format-codes" class="level3">
+<h3 class="anchored" data-anchor-id="time-format-codes"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3.2.1</strong></span> Time format codes</h3>
+<p><code>%Y</code>: Four-digit year<br> <code>%y</code>: Two-digit year<br> <code>%m</code>: Two-digit month (01~12)<br> <code>%d</code>: Two-digit day of the month (01~31)<br> <code>%H</code>: Hour in 24-hour format (00~23)<br> <code>%M</code>: Two-digit minute (00~59)<br> <code>%S</code>: Two-digit second (00~59)<br> <code>%z</code>: Time zone offset, for example +0800<br> <code>%Z</code>: Time zone name, for example CST</p>
+</section>
+</section>
+<section id="calculating-date" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-date"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3.3</strong></span> Calculating date</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import built-in data diet (The data concern a subsample of subjects drawn from larger cohort studies of the incidence of coronary heart disease (CHD))</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">'Epi'</span>)</span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"diet"</span>)</span>
+<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(diet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   337 obs. of  15 variables:
+ $ id        : num  102 59 126 16 247 272 268 206 182 2 ...
+ $ doe       : Date, format: "1976-01-17" "1973-07-16" ...
+ $ dox       : Date, format: "1986-12-02" "1982-07-05" ...
+ $ dob       : Date, format: "1939-03-02" "1912-07-05" ...
+ $ y         : num  10.875 8.969 14.01 0.627 11.274 ...
+ $ fail      : num  0 0 13 3 13 3 0 0 13 0 ...
+ $ job       : Factor w/ 3 levels "Driver","Conductor",..: 1 1 2 1 3 3 3 3 2 1 ...
+ $ month     : num  1 7 3 5 3 3 2 1 3 12 ...
+ $ energy    : num  22.9 23.9 25 22.2 18.5 ...
+ $ height    : num  182 166 152 171 178 ...
+ $ weight    : num  88.2 58.7 49.9 89.4 97.1 ...
+ $ fat       : num  9.17 9.65 11.25 7.58 9.15 ...
+ $ fibre     : num  1.4 0.935 1.248 1.557 0.991 ...
+ $ energy.grp: Factor w/ 2 levels "&lt;=2750 KCals",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ chd       : num  0 0 1 1 1 1 0 0 1 0 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data which we will deal with</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>bdat <span class="ot">&lt;-</span> diet<span class="sc">$</span>dox[<span class="dv">1</span>]</span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>bdat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1986-12-02"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Some basic calculation between dates</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>bdat <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1986-12-03"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>diet<span class="sc">$</span>dox2 <span class="ot">&lt;-</span> <span class="fu">format</span>(diet<span class="sc">$</span>dox, <span class="at">format=</span><span class="st">"%A %d %B %Y"</span>)</span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diet<span class="sc">$</span>dox2, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "星期二 02 十二月 1986" "星期一 05 七月 1982"   "星期二 20 三月 1984"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Some advanced calculation between dates</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(diet<span class="sc">$</span>dox)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1986-12-02"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(diet<span class="sc">$</span>dox)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1968-08-29" "1986-12-02"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(diet<span class="sc">$</span>dox)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1984-02-20"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(diet<span class="sc">$</span>dox)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1986-12-02"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(diet<span class="sc">$</span>dox))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time difference of 6669 days</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(<span class="fu">min</span>(diet<span class="sc">$</span>dox), <span class="fu">max</span>(diet<span class="sc">$</span>dox), <span class="at">units =</span> <span class="st">"weeks"</span>)  <span class="co"># Set unit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time difference of -952.7143 weeks</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Epi::cal.yr() function converts the date format to numeric format</span></span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>diet2 <span class="ot">&lt;-</span> Epi<span class="sc">::</span><span class="fu">cal.yr</span>(diet)</span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(diet2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   337 obs. of  16 variables:
+ $ id        : num  102 59 126 16 247 272 268 206 182 2 ...
+ $ doe       : 'cal.yr' num  1976 1974 1970 1969 1968 ...
+ $ dox       : 'cal.yr' num  1987 1983 1984 1970 1979 ...
+ $ dob       : 'cal.yr' num  1939 1913 1920 1907 1919 ...
+ $ y         : num  10.875 8.969 14.01 0.627 11.274 ...
+ $ fail      : num  0 0 13 3 13 3 0 0 13 0 ...
+ $ job       : Factor w/ 3 levels "Driver","Conductor",..: 1 1 2 1 3 3 3 3 2 1 ...
+ $ month     : num  1 7 3 5 3 3 2 1 3 12 ...
+ $ energy    : num  22.9 23.9 25 22.2 18.5 ...
+ $ height    : num  182 166 152 171 178 ...
+ $ weight    : num  88.2 58.7 49.9 89.4 97.1 ...
+ $ fat       : num  9.17 9.65 11.25 7.58 9.15 ...
+ $ fibre     : num  1.4 0.935 1.248 1.557 0.991 ...
+ $ energy.grp: Factor w/ 2 levels "&lt;=2750 KCals",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ chd       : num  0 0 1 1 1 1 0 0 1 0 ...
+ $ dox2      : chr  "星期二 02 十二月 1986" "星期一 05 七月 1982" "星期二 20 三月 1984" "星期三 31 十二月 1969" ...</code></pre>
+</div>
+</div>
+</section>
+<section id="set-time-zone-calculation" class="level2">
+<h2 class="anchored" data-anchor-id="set-time-zone-calculation"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>3.4</strong></span> Set time zone &amp; calculation</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>bd <span class="ot">&lt;-</span> <span class="st">'1994-09-22 20:30:00'</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>bdtime <span class="ot">&lt;-</span> <span class="fu">strptime</span>(<span class="at">x =</span> bd, <span class="at">format =</span> <span class="st">'%Y-%m-%d %H:%M:%S'</span>, <span class="at">tz =</span> <span class="st">"Asia/Shanghai"</span>)  <span class="co"># Set character to time format and add a time zone</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(bdtime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "POSIXlt" "POSIXt" </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">unclass</span>(bdtime))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     sec min hour mday mon year wday yday isdst zone  gmtoff
+[1,] 0   30  20   22   8   94   4    264  0     "CST" NA    
+attr(,"tzone")
+[1] "Asia/Shanghai" "CST"           "CDT"          </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>bdtime<span class="sc">$</span>wday</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(bdtime, <span class="at">format =</span> <span class="st">'%d.%m.%Y'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "22.09.1994"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>bdtime <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1994-09-22 20:30:01 CST"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Also, some essential calculation</span></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>bd2 <span class="ot">&lt;-</span> <span class="st">'1995-09-01 7:30:00'</span></span>
+<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>bdtime2 <span class="ot">&lt;-</span> <span class="fu">strptime</span>(bd2, <span class="at">format =</span> <span class="st">'%Y-%m-%d %H:%M:%S'</span>, <span class="at">tz =</span> <span class="st">'Asia/Shanghai'</span>)</span>
+<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a>bdtime2 <span class="sc">-</span> bdtime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time difference of 343.4583 days</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(<span class="at">time1 =</span> bdtime2, <span class="at">time2 =</span> bdtime, <span class="at">units =</span> <span class="st">'secs'</span>)  <span class="co"># Set unit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time difference of 29674800 secs</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(bdtime, bdtime2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1995-03-13 14:00:00 CST"</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="latex" class="level1">
+<h1><span style="color:gray; font-family:Microsoft JhengHei;"><strong>4</strong></span> <span style="color:orange">LaTeX</span></h1>
+<section id="fundamental-1" class="level2">
+<h2 class="anchored" data-anchor-id="fundamental-1"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>4.1</strong></span> Fundamental</h2>
+<center>
+<img src="images/Mathematical Annotation in R.png" width="600" height="579">
+</center>
+<ul>
+<li>Use <code>$$e^{i\pi}+1=0$$</code> to form Euler’s Law expression <span class="math display">\[e^{i\pi}+1=0\]</span></li>
+<li><a href="https://blog.csdn.net/ViatorSun/article/details/82826664">Hyperlink of a CN website for more detail about LaTeX</a></li>
+</ul>
+</section>
+<section id="advanced-1" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-1"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>4.2</strong></span> Advanced</h2>
+<ul>
+<li>Here are some additional formulas from ENV221 statistic method:<br>
+<ol type="1">
+<li><span style="color:orange">Z-test</span>:<br> The LaTex expression for Z-test is: <span class="math display">\[Z=\frac{\overline{x}-\mu}{\frac{\sigma}{\sqrt{n}}}\]</span> where <span class="math inline">\(\overline{x}\)</span> is the sample mean, <span class="math inline">\(\mu\)</span> is the population mean, <span class="math inline">\(\sigma\)</span> is the population standard deviation, and <span class="math inline">\(n\)</span> is the sample size.</li>
+<li><span style="color:orange">t-test</span>:<br> The LaTex expression for t-test is: <span class="math display">\[t=\frac{\overline{x}-\mu}{\frac{s}{\sqrt{n}}}\]</span> where <span class="math inline">\(\overline{x}\)</span> is the sample mean, <span class="math inline">\(\mu\)</span> is the population mean, <span class="math inline">\(s\)</span> is the sample standard deviation, and <span class="math inline">\(n\)</span> is the sample size.</li>
+<li><span style="color:orange">F-test</span>:<br> The LaTex expression for F-test is: <span class="math display">\[F=\frac{s_1^2}{s_2^2}\]</span> where <span class="math inline">\(s_1^2\)</span> is the variance of the first sample and <span class="math inline">\(s_2^2\)</span> is the variance of the second sample.</li>
+<li><span style="color:orange">Chi-square test</span>:<br> The LaTex expression for the chi-square test is: <span class="math display">\[\chi2=\sum_{i=1}{n}\frac{(O_i-E_i)^2}{E_i}\]</span> where <span class="math inline">\(O_i\)</span> represents observed values and <span class="math inline">\(E_i\)</span> represents expected values.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="r-graph-advanced" class="level1">
+<h1><span style="color:gray; font-family:Microsoft JhengHei;"><strong>5</strong></span> R graph (advanced)</h1>
+<section id="r-graph-advanceddifferent-theme-of-plot" class="level2">
+<h2 class="anchored" data-anchor-id="r-graph-advanceddifferent-theme-of-plot"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>5.1</strong></span> R graph (advanced)Different theme of plot</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a>bw <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(CO2) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(conc, uptake)) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(CO2) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(conc, uptake)) <span class="sc">+</span> <span class="fu">theme_test</span>()</span>
+<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a>classic <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(CO2) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(conc, uptake)) <span class="sc">+</span> <span class="fu">theme_classic</span>()</span>
+<span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb133-6"><a href="#cb133-6" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">+</span> test <span class="sc">+</span> classic <span class="sc">+</span> </span>
+<span id="cb133-7"><a href="#cb133-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb133-8"><a href="#cb133-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(</span>
+<span id="cb133-9"><a href="#cb133-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">expression</span>(CO[<span class="dv">2</span>] <span class="sc">*</span> <span class="st">" uptake by plant type plot with different theme"</span>),</span>
+<span id="cb133-10"><a href="#cb133-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">tag_levels =</span> <span class="st">"A"</span></span>
+<span id="cb133-11"><a href="#cb133-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="r-graph-advancedmath-formulas-with-r" class="level2">
+<h2 class="anchored" data-anchor-id="r-graph-advancedmath-formulas-with-r"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>5.2</strong></span> R graph (advanced)Math formulas with R</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(CO2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Grouped Data: uptake ~ conc | Plant
+  Plant   Type  Treatment conc uptake
+1   Qn1 Quebec nonchilled   95   16.0
+2   Qn1 Quebec nonchilled  175   30.4
+3   Qn1 Quebec nonchilled  250   34.8
+4   Qn1 Quebec nonchilled  350   37.2
+5   Qn1 Quebec nonchilled  500   35.3
+6   Qn1 Quebec nonchilled  675   39.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fundamental expression</span></span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CO2<span class="sc">$</span>conc, CO2<span class="sc">$</span>uptake, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">las =</span> <span class="dv">1</span>, </span>
+<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">'CO2 concentration'</span>, <span class="at">ylab =</span> <span class="st">'CO2 uptake'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Advanced expression (Use `?plotmath` to check more details of mathematical annotation in R)</span></span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CO2<span class="sc">$</span>conc, CO2<span class="sc">$</span>uptake, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">las =</span> <span class="dv">1</span>, </span>
+<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="st">'CO'</span>[<span class="dv">2</span>] <span class="sc">*</span> <span class="st">' concentration (mL/L)'</span>), </span>
+<span id="cb137-4"><a href="#cb137-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="st">'CO'</span>[<span class="dv">2</span>] <span class="sc">*</span> <span class="st">' uptake ('</span> <span class="sc">*</span>mu <span class="sc">*</span> <span class="st">'mol m'</span><span class="sc">^-</span><span class="dv">2</span> <span class="sc">*</span> <span class="st">'s'</span><span class="sc">^-</span><span class="dv">1</span> <span class="sc">*</span> <span class="st">')'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LaTeX expression</span></span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(latex2exp)</span>
+<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CO2<span class="sc">$</span>conc, CO2<span class="sc">$</span>uptake, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">las =</span> <span class="dv">1</span>, </span>
+<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">TeX</span>(<span class="st">'CO$_2$ concentration (mL/L)'</span>), </span>
+<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">TeX</span>(<span class="st">'CO$_2$ uptake ($</span><span class="sc">\\</span><span class="st">mu$mol m$^{-2}$ s$^{-1}$)'</span>))</span>
+<span id="cb138-6"><a href="#cb138-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">850</span>, <span class="dv">30</span>, <span class="fu">expression</span>(<span class="fu">prod</span>(<span class="fu">plain</span>(P)(X <span class="sc">==</span> x), x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-18-3.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><a href="https://www.cnblogs.com/kisen/p/12574830.html">Hyperlink of a CN website for more detail about Mathematical Annotation in R</a></li>
+</ul>
+</section>
+<section id="r-graph-advancedsize-and-layout" class="level2">
+<h2 class="anchored" data-anchor-id="r-graph-advancedsize-and-layout"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>5.3</strong></span> R graph (advanced)Size and layout</h2>
+<ul>
+<li>ggplot2: patchwork package is used to range the size and layout of multiply plots</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb139-2"><a href="#cb139-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(airquality) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="fu">as.factor</span>(Month), Ozone))</span>
+<span id="cb139-3"><a href="#cb139-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(airquality) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(Solar.R, Ozone))</span>
+<span id="cb139-4"><a href="#cb139-4" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(airquality) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(Ozone))</span>
+<span id="cb139-5"><a href="#cb139-5" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 37 rows containing non-finite values (`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 42 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 37 rows containing non-finite values (`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">/</span> p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 37 rows containing non-finite values (`stat_boxplot()`).
+Removed 42 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 37 rows containing non-finite values (`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-19-2.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a>(p1 <span class="sc">+</span> p2) <span class="sc">/</span> p3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 37 rows containing non-finite values (`stat_boxplot()`).
+Removed 42 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 37 rows containing non-finite values (`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-19-3.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>(p1 <span class="sc">+</span> p2) <span class="sc">/</span> p3 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">'A'</span>) <span class="sc">+</span> </span>
+<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))  <span class="co"># plot_layout() function is used to define the grid layout of the composite graph.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 37 rows containing non-finite values (`stat_boxplot()`).
+Removed 42 rows containing missing values (`geom_point()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 37 rows containing non-finite values (`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-19-4.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Built-in par() function</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>))  <span class="co"># Set the layout by using vector c(x, y)</span></span>
+<span id="cb156-2"><a href="#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality<span class="sc">$</span>Solar.R, airquality<span class="sc">$</span>Ozone)</span>
+<span id="cb156-3"><a href="#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Solar.R)</span>
+<span id="cb156-4"><a href="#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(airquality<span class="sc">$</span>Month)</span>
+<span id="cb156-5"><a href="#cb156-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality<span class="sc">$</span>Solar.R, airquality<span class="sc">$</span>Ozone)</span>
+<span id="cb156-6"><a href="#cb156-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Solar.R)</span>
+<span id="cb156-7"><a href="#cb156-7" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(airquality<span class="sc">$</span>Month)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li><span style="color:red">Built-in layout() function</span></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a matrix to store the information about layout</span></span>
+<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a>mymat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb157-3"><a href="#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(mymat)</span>
+<span id="cb157-4"><a href="#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality<span class="sc">$</span>Solar.R, airquality<span class="sc">$</span>Ozone)</span>
+<span id="cb157-5"><a href="#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Solar.R)</span>
+<span id="cb157-6"><a href="#cb157-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(airquality<span class="sc">$</span>Month)</span>
+<span id="cb157-7"><a href="#cb157-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality<span class="sc">$</span>Solar.R, airquality<span class="sc">$</span>Ozone)</span>
+<span id="cb157-8"><a href="#cb157-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Solar.R)</span>
+<span id="cb157-9"><a href="#cb157-9" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(airquality<span class="sc">$</span>Month)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Also, customize the exact layout by using some parameters like 'widths=' and 'heights=' by filling vector</span></span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>mymat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a>mymat  <span class="co"># Check the matrix which was used to layout plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    2    4
+[2,]    1    3    5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(mymat, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb160-2"><a href="#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality<span class="sc">$</span>Solar.R, airquality<span class="sc">$</span>Ozone)</span>
+<span id="cb160-3"><a href="#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Solar.R)</span>
+<span id="cb160-4"><a href="#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(airquality<span class="sc">$</span>Month)</span>
+<span id="cb160-5"><a href="#cb160-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(airquality<span class="sc">$</span>Solar.R, airquality<span class="sc">$</span>Ozone)</span>
+<span id="cb160-6"><a href="#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Solar.R)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-21-2.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is an example from quiz1. Also, please check the exercises to view more difficult questions</span></span>
+<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>mymat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">0</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a>mymat  <span class="co"># Check the matrix which was used to layout plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    3
+[2,]    2    0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb163"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(mymat, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))  <span class="co"># Set the ratio between widths and heights</span></span>
+<span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width, <span class="at">pch=</span><span class="dv">20</span>, <span class="at">xlab=</span><span class="st">'Sepal Length (cm)'</span>, <span class="at">ylab=</span><span class="st">'Sepal Width (cm)'</span>, <span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb163-3"><a href="#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(iris<span class="sc">$</span>Sepal.Length, <span class="at">pch=</span><span class="dv">20</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">horizontal=</span>T)</span>
+<span id="cb163-4"><a href="#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(iris<span class="sc">$</span>Sepal.Width, <span class="at">pch=</span><span class="dv">20</span>, <span class="at">las=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-21-3.png" class="img-fluid figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="r-tidyverse" class="level1">
+<h1><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6</strong></span> R Tidyverse</h1>
+<section id="workflow" class="level2">
+<h2 class="anchored" data-anchor-id="workflow"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.1</strong></span> Workflow</h2>
+<center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Tidyverse%20workflow.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p></p><figcaption class="figure-caption">Tidyverse workflow</figcaption><p></p>
+</figure>
+</div>
+</center>
+</section>
+<section id="fundamental-operations" class="level2">
+<h2 class="anchored" data-anchor-id="fundamental-operations"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.2</strong></span> Fundamental operations</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the package</span></span>
+<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.0     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ lubridate 1.9.2     ✔ tibble    3.1.8
+✔ purrr     1.0.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ tidyr::extract()   masks magrittr::extract()
+✖ dplyr::filter()    masks stats::filter()
+✖ dplyr::lag()       masks stats::lag()
+✖ purrr::set_names() masks magrittr::set_names()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the members of them</span></span>
+<span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidyverse_packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "broom"         "conflicted"    "cli"           "dbplyr"       
+ [5] "dplyr"         "dtplyr"        "forcats"       "ggplot2"      
+ [9] "googledrive"   "googlesheets4" "haven"         "hms"          
+[13] "httr"          "jsonlite"      "lubridate"     "magrittr"     
+[17] "modelr"        "pillar"        "purrr"         "ragg"         
+[21] "readr"         "readxl"        "reprex"        "rlang"        
+[25] "rstudioapi"    "rvest"         "stringr"       "tibble"       
+[29] "tidyr"         "xml2"          "tidyverse"    </code></pre>
+</div>
+</div>
+<p>Core members and their function:</p>
+<ul>
+<li><code>ggplot2</code>: Creating graphics</li>
+<li><code>dplyr</code>: Data manipulation</li>
+<li><code>tidyr</code>: Get to tidy data</li>
+<li><code>readr</code>: Read rectangular data</li>
+<li><code>purrr</code>: Functional programming</li>
+<li><code>tibble</code>: Re-imagining of the data frame</li>
+<li><code>stringr</code>: Working with strings</li>
+<li><code>forcats</code>: Working with factors</li>
+</ul>
+</section>
+<section id="pipe-operator" class="level2">
+<h2 class="anchored" data-anchor-id="pipe-operator"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.3</strong></span> Pipe operator</h2>
+<p>The pipe operator can be written as <code>%&gt;%</code> or <code>|&gt;</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.109</span>, <span class="fl">0.359</span>, <span class="fl">0.63</span>, <span class="fl">0.996</span>, <span class="fl">0.515</span>, <span class="fl">0.142</span>, <span class="fl">0.017</span>, <span class="fl">0.829</span>, <span class="fl">0.907</span>)</span>
+<span id="cb168-2"><a href="#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1:</span></span>
+<span id="cb168-3"><a href="#cb168-3" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> <span class="fu">log</span>(x)</span>
+<span id="cb168-4"><a href="#cb168-4" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">diff</span>(y1)</span>
+<span id="cb168-5"><a href="#cb168-5" aria-hidden="true" tabindex="-1"></a>y3 <span class="ot">&lt;-</span> <span class="fu">exp</span>(y2)</span>
+<span id="cb168-6"><a href="#cb168-6" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">round</span>(y3)</span>
+<span id="cb168-7"><a href="#cb168-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2</span></span>
+<span id="cb168-8"><a href="#cb168-8" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">exp</span>(<span class="fu">diff</span>(<span class="fu">log</span>(x))))</span>
+<span id="cb168-9"><a href="#cb168-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Pipe method</span></span>
+<span id="cb168-10"><a href="#cb168-10" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> x <span class="sc">%&gt;%</span> <span class="fu">log</span>() <span class="sc">%&gt;%</span> <span class="fu">diff</span>() <span class="sc">%&gt;%</span> <span class="fu">exp</span>() <span class="sc">%&gt;%</span> <span class="fu">round</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mutiply-work-by-using-tidyverse-pipe" class="level2">
+<h2 class="anchored" data-anchor-id="mutiply-work-by-using-tidyverse-pipe"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.4</strong></span> Mutiply work by using tidyverse pipe</h2>
+<section id="graph-work" class="level3">
+<h3 class="anchored" data-anchor-id="graph-work"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.4.1</strong></span> Graph work</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By using R built-in par() function and a loop</span></span>
+<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb169-4"><a href="#cb169-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">boxplot</span>(iris[, i] <span class="sc">~</span> iris<span class="sc">$</span>Species, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">xlab =</span> <span class="st">'Species'</span>, <span class="at">ylab =</span> <span class="fu">names</span>(iris)[i])</span>
+<span id="cb169-5"><a href="#cb169-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By using pivot_longer() function and tidyverse pipe</span></span>
+<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="sc">-</span>Species) <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(Species, value)) <span class="sc">+</span> <span class="fu">facet_wrap</span>(name <span class="sc">~</span>.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-24-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="statistic-work" class="level3">
+<h3 class="anchored" data-anchor-id="statistic-work"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.4.2</strong></span> Statistic work</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb171"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base R</span></span>
+<span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a>dtf1_mean <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Species =</span> <span class="fu">unique</span>(iris<span class="sc">$</span>Species), <span class="at">Mean_Sepal_Length =</span> <span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb171-3"><a href="#cb171-3" aria-hidden="true" tabindex="-1"></a>dtf1_sd <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Species =</span> <span class="fu">unique</span>(iris<span class="sc">$</span>Species), <span class="at">SD_Sepal_Length =</span> <span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, sd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb171-4"><a href="#cb171-4" aria-hidden="true" tabindex="-1"></a>dtf1_median <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Species =</span> <span class="fu">unique</span>(iris<span class="sc">$</span>Species), <span class="at">Median_Sepal_Length =</span> <span class="fu">tapply</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Species, median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb171-5"><a href="#cb171-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dtf1_mean) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Species"</span>, <span class="st">"Mean_Sepal_Length"</span>)</span>
+<span id="cb171-6"><a href="#cb171-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dtf1_sd) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Species"</span>, <span class="st">"SD_Sepal_Length"</span>)</span>
+<span id="cb171-7"><a href="#cb171-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dtf1_median) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Species"</span>, <span class="st">"Median_Sepal_Length"</span>)</span>
+<span id="cb171-8"><a href="#cb171-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(dtf1_mean, dtf1_sd, dtf1_median)  <span class="co"># Show them in one table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Species Mean_Sepal_Length    Species SD_Sepal_Length    Species
+setosa         setosa             5.006     setosa       0.3524897     setosa
+versicolor versicolor             5.936 versicolor       0.5161711 versicolor
+virginica   virginica             6.588  virginica       0.6358796  virginica
+           Median_Sepal_Length
+setosa                     5.0
+versicolor                 5.9
+virginica                  6.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb173"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb173-1"><a href="#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use a loop</span></span>
+<span id="cb173-2"><a href="#cb173-2" aria-hidden="true" tabindex="-1"></a>dtf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">3</span>))</span>
+<span id="cb173-3"><a href="#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb173-4"><a href="#cb173-4" aria-hidden="true" tabindex="-1"></a>  dtf1_mean <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">tapply</span>(iris[, i], iris<span class="sc">$</span>Species, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb173-5"><a href="#cb173-5" aria-hidden="true" tabindex="-1"></a>  dtf1_sd <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">tapply</span>(iris[, i], iris<span class="sc">$</span>Species, sd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb173-6"><a href="#cb173-6" aria-hidden="true" tabindex="-1"></a>  dtf1_median <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">tapply</span>(iris[, i], iris<span class="sc">$</span>Species, median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb173-7"><a href="#cb173-7" aria-hidden="true" tabindex="-1"></a>  dtf1 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dtf1_mean, dtf1_sd, dtf1_median)</span>
+<span id="cb173-8"><a href="#cb173-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(dtf1) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">names</span>(iris)[i], <span class="st">'.'</span>, <span class="fu">c</span>(<span class="st">'mean'</span>, <span class="st">'sd'</span>, <span class="st">'median'</span>))</span>
+<span id="cb173-9"><a href="#cb173-9" aria-hidden="true" tabindex="-1"></a>  dtf <span class="ot">&lt;-</span> <span class="fu">cbind</span>(dtf, dtf1)</span>
+<span id="cb173-10"><a href="#cb173-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb173-11"><a href="#cb173-11" aria-hidden="true" tabindex="-1"></a>dtf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           rep.NA..3. Sepal.Length.mean Sepal.Length.sd Sepal.Length.median
+setosa             NA             5.006       0.3524897                 5.0
+versicolor         NA             5.936       0.5161711                 5.9
+virginica          NA             6.588       0.6358796                 6.5
+           Sepal.Width.mean Sepal.Width.sd Sepal.Width.median Petal.Length.mean
+setosa                3.428      0.3790644                3.4             1.462
+versicolor            2.770      0.3137983                2.8             4.260
+virginica             2.974      0.3224966                3.0             5.552
+           Petal.Length.sd Petal.Length.median Petal.Width.mean Petal.Width.sd
+setosa           0.1736640                1.50            0.246      0.1053856
+versicolor       0.4699110                4.35            1.326      0.1977527
+virginica        0.5518947                5.55            2.026      0.2746501
+           Petal.Width.median
+setosa                    0.2
+versicolor                1.3
+virginica                 2.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse</span></span>
+<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a>dtf <span class="ot">&lt;-</span> iris <span class="sc">|&gt;</span> </span>
+<span id="cb175-3"><a href="#cb175-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>Species) <span class="sc">|&gt;</span> </span>
+<span id="cb175-4"><a href="#cb175-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species, name) <span class="sc">|&gt;</span> </span>
+<span id="cb175-5"><a href="#cb175-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb175-6"><a href="#cb175-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd   =</span> <span class="fu">sd</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb175-7"><a href="#cb175-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb175-8"><a href="#cb175-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb175-9"><a href="#cb175-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-10"><a href="#cb175-10" aria-hidden="true" tabindex="-1"></a>dtf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 5
+   Species    name          mean    sd median
+   &lt;fct&gt;      &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1 setosa     Petal.Length 1.46  0.174   1.5 
+ 2 setosa     Petal.Width  0.246 0.105   0.2 
+ 3 setosa     Sepal.Length 5.01  0.352   5   
+ 4 setosa     Sepal.Width  3.43  0.379   3.4 
+ 5 versicolor Petal.Length 4.26  0.470   4.35
+ 6 versicolor Petal.Width  1.33  0.198   1.3 
+ 7 versicolor Sepal.Length 5.94  0.516   5.9 
+ 8 versicolor Sepal.Width  2.77  0.314   2.8 
+ 9 virginica  Petal.Length 5.55  0.552   5.55
+10 virginica  Petal.Width  2.03  0.275   2   
+11 virginica  Sepal.Length 6.59  0.636   6.5 
+12 virginica  Sepal.Width  2.97  0.322   3   </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="tidy-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="tidy-the-dataset"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.5</strong></span> Tidy the dataset</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb177"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb177-1"><a href="#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original dataset of table1</span></span>
+<span id="cb177-2"><a href="#cb177-2" aria-hidden="true" tabindex="-1"></a>table1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  country      year  cases population
+  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+1 Afghanistan  1999    745   19987071
+2 Afghanistan  2000   2666   20595360
+3 Brazil       1999  37737  172006362
+4 Brazil       2000  80488  174504898
+5 China        1999 212258 1272915272
+6 China        2000 213766 1280428583</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb179"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb179-1"><a href="#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute rate per 10,000</span></span>
+<span id="cb179-2"><a href="#cb179-2" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">rate =</span> cases <span class="sc">/</span> population <span class="sc">*</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  country      year  cases population  rate
+  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;
+1 Afghanistan  1999    745   19987071 0.373
+2 Afghanistan  2000   2666   20595360 1.29 
+3 Brazil       1999  37737  172006362 2.19 
+4 Brazil       2000  80488  174504898 4.61 
+5 China        1999 212258 1272915272 1.67 
+6 China        2000 213766 1280428583 1.67 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb181"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute cases per year</span></span>
+<span id="cb181-2"><a href="#cb181-2" aria-hidden="true" tabindex="-1"></a>table1 <span class="sc">%&gt;%</span> <span class="fu">count</span>(year, <span class="at">wt =</span> cases)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+   year      n
+  &lt;dbl&gt;  &lt;dbl&gt;
+1  1999 250740
+2  2000 296920</code></pre>
+</div>
+</div>
+</section>
+<section id="conversions-the-dataframe-type" class="level2">
+<h2 class="anchored" data-anchor-id="conversions-the-dataframe-type"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.6</strong></span> Conversions the dataframe type</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb183"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb183-1"><a href="#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original dataset of table2</span></span>
+<span id="cb183-2"><a href="#cb183-2" aria-hidden="true" tabindex="-1"></a>table2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 4
+   country      year type            count
+   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
+ 1 Afghanistan  1999 cases             745
+ 2 Afghanistan  1999 population   19987071
+ 3 Afghanistan  2000 cases            2666
+ 4 Afghanistan  2000 population   20595360
+ 5 Brazil       1999 cases           37737
+ 6 Brazil       1999 population  172006362
+ 7 Brazil       2000 cases           80488
+ 8 Brazil       2000 population  174504898
+ 9 China        1999 cases          212258
+10 China        1999 population 1272915272
+11 China        2000 cases          213766
+12 China        2000 population 1280428583</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb185"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Divided the type into cases and population</span></span>
+<span id="cb185-2"><a href="#cb185-2" aria-hidden="true" tabindex="-1"></a>table2 <span class="sc">%&gt;%</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> type, <span class="at">values_from =</span> count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  country      year  cases population
+  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+1 Afghanistan  1999    745   19987071
+2 Afghanistan  2000   2666   20595360
+3 Brazil       1999  37737  172006362
+4 Brazil       2000  80488  174504898
+5 China        1999 212258 1272915272
+6 China        2000 213766 1280428583</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb187"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb187-1"><a href="#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original dataset of table3</span></span>
+<span id="cb187-2"><a href="#cb187-2" aria-hidden="true" tabindex="-1"></a>table3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  country      year rate             
+  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            
+1 Afghanistan  1999 745/19987071     
+2 Afghanistan  2000 2666/20595360    
+3 Brazil       1999 37737/172006362  
+4 Brazil       2000 80488/174504898  
+5 China        1999 212258/1272915272
+6 China        2000 213766/1280428583</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb189"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb189-1"><a href="#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate the rate into cases and population</span></span>
+<span id="cb189-2"><a href="#cb189-2" aria-hidden="true" tabindex="-1"></a>table3 <span class="sc">%&gt;%</span> <span class="fu">separate</span>(<span class="at">col =</span> rate, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"cases"</span>, <span class="st">"population"</span>), <span class="at">sep =</span> <span class="st">"/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  country      year cases  population
+  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     
+1 Afghanistan  1999 745    19987071  
+2 Afghanistan  2000 2666   20595360  
+3 Brazil       1999 37737  172006362 
+4 Brazil       2000 80488  174504898 
+5 China        1999 212258 1272915272
+6 China        2000 213766 1280428583</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb191"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original dataset of table4a and table4b</span></span>
+<span id="cb191-2"><a href="#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(table4a, table4b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      country   1999   2000     country       1999       2000
+1 Afghanistan    745   2666 Afghanistan   19987071   20595360
+2      Brazil  37737  80488      Brazil  172006362  174504898
+3       China 212258 213766       China 1272915272 1280428583</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb193"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Put table4a and table4b together to form a new table with both of their dataset</span></span>
+<span id="cb193-2"><a href="#cb193-2" aria-hidden="true" tabindex="-1"></a>tidy4a_changed <span class="ot">&lt;-</span> table4a <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="st">`</span><span class="at">1999</span><span class="st">`</span>, <span class="st">`</span><span class="at">2000</span><span class="st">`</span>), <span class="at">names_to =</span> <span class="st">"year"</span>, <span class="at">values_to =</span> <span class="st">"cases"</span>)</span>
+<span id="cb193-3"><a href="#cb193-3" aria-hidden="true" tabindex="-1"></a>tidy4b_changed <span class="ot">&lt;-</span> table4b <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="fu">c</span>(<span class="st">`</span><span class="at">1999</span><span class="st">`</span>, <span class="st">`</span><span class="at">2000</span><span class="st">`</span>), <span class="at">names_to =</span> <span class="st">"year"</span>, <span class="at">values_to =</span> <span class="st">"population"</span>)</span>
+<span id="cb193-4"><a href="#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(tidy4a_changed, tidy4b_changed)   <span class="do">## Kind of like MySQL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(country, year)`</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  country     year   cases population
+  &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+1 Afghanistan 1999     745   19987071
+2 Afghanistan 2000    2666   20595360
+3 Brazil      1999   37737  172006362
+4 Brazil      2000   80488  174504898
+5 China       1999  212258 1272915272
+6 China       2000  213766 1280428583</code></pre>
+</div>
+</div>
+</section>
+<section id="find-missing-observations" class="level2">
+<h2 class="anchored" data-anchor-id="find-missing-observations"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>6.7</strong></span> Find missing observations</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb196"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb196-1"><a href="#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openair)</span>
+<span id="cb196-2"><a href="#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb196-3"><a href="#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a function to count missing observations</span></span>
+<span id="cb196-4"><a href="#cb196-4" aria-hidden="true" tabindex="-1"></a>sum_of_na <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb196-5"><a href="#cb196-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">is.na</span>(x))</span>
+<span id="cb196-6"><a href="#cb196-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb196-7"><a href="#cb196-7" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb196-8"><a href="#cb196-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">across</span>(<span class="fu">everything</span>(), sum_of_na)</span>
+<span id="cb196-9"><a href="#cb196-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 10
+   date    ws    wd   nox   no2    o3  pm10   so2    co  pm25
+  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1     0   632   219  2423  2438  2589  2162 10450  1936  8775</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="anova-post-hoc-tests" class="level1">
+<h1><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7</strong></span> ANOVA Post-hoc tests</h1>
+<section id="post-hoc-tests" class="level2">
+<h2 class="anchored" data-anchor-id="post-hoc-tests"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.1</strong></span> Post-hoc tests</h2>
+<p>Background informations: A biologist studies the weight gain of male lab rats on diets over a 4-week period. Three different diets are applied.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb198"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb198-1"><a href="#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistic anlysis</span></span>
+<span id="cb198-2"><a href="#cb198-2" aria-hidden="true" tabindex="-1"></a>(dtf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">diet1 =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">95</span>, <span class="dv">100</span>),</span>
+<span id="cb198-3"><a href="#cb198-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">diet2 =</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">125</span>, <span class="dv">130</span>),</span>
+<span id="cb198-4"><a href="#cb198-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">diet3 =</span> <span class="fu">c</span>(<span class="dv">125</span>, <span class="dv">130</span>, <span class="dv">135</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  diet1 diet2 diet3
+1    90   120   125
+2    95   125   130
+3   100   130   135</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb200"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb200-1"><a href="#cb200-1" aria-hidden="true" tabindex="-1"></a>dtf2 <span class="ot">&lt;-</span> <span class="fu">stack</span>(dtf)</span>
+<span id="cb200-2"><a href="#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dtf2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"wg"</span>, <span class="st">"diet"</span>)</span>
+<span id="cb200-3"><a href="#cb200-3" aria-hidden="true" tabindex="-1"></a>wg_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(wg <span class="sc">~</span> diet, <span class="at">data =</span> dtf2)</span>
+<span id="cb200-4"><a href="#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wg_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+diet         2   2150    1075      43 0.000277 ***
+Residuals    6    150      25                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb202"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb202-1"><a href="#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb202-2"><a href="#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb202-3"><a href="#cb202-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dtf2) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(wg, diet))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="fishers-least-significant-difference-lsd-test" class="level2">
+<h2 class="anchored" data-anchor-id="fishers-least-significant-difference-lsd-test"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.2</strong></span> Fisher’s Least Significant Difference (LSD) Test</h2>
+<section id="concept" class="level3">
+<h3 class="anchored" data-anchor-id="concept"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.2.1</strong></span> Concept</h3>
+<p>Pair-wise comparisons of all the groups based on the <span class="math inline">\(t\)</span>-test: <span class="math display">\[L S D=t_{\alpha / 2} \sqrt{S_{p}^{2}\left(\frac{1}{n_1}+\frac{1}{n_2}+\cdots\right)}\]</span> <span class="math display">\[S_{p}^{2}=\frac{\left(n_{1}-1\right) S_{1}^{2}+\left(n_{2}-1\right) S_{2}^{2}+\left(n_{3}-1\right) S_{3}^{2}+\cdots}{\left(n_{1}-1\right)+\left(n_{2}-1\right)+\left(n_{3}-1\right)+\cdots}\]</span></p>
+<ul>
+<li><span class="math inline">\(S_{p}^{2}:\)</span>: pooled standard deviation (some use Mean Standard Error)</li>
+<li><span class="math inline">\(t_{\alpha / 2}: \mathrm{t}\)</span>: <span class="math inline">\(t\)</span> critical value at <span class="math inline">\(\alpha=0.025\)</span></li>
+<li>Degree of freedom: <span class="math inline">\(N - k\)</span>
+<ul>
+<li><span class="math inline">\(N\)</span>: total observations</li>
+<li><span class="math inline">\(k\)</span>: number of factors</li>
+</ul></li>
+<li>If <span class="math inline">\(\left|\bar{x}_{1}-\bar{x}_{2}\right|&gt;L S D\)</span>, then the difference of <span class="math inline">\(x_1\)</span> group and <span class="math inline">\(x_2\)</span> group is significant at <span class="math inline">\(\alpha\)</span>.</li>
+<li>In multiple comparisons (<span class="math inline">\(k\)</span> factors), the number of comparison needed is: <span class="math inline">\(\frac{k(k-1)}{2}\)</span></li>
+</ul>
+</section>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.2.2</strong></span> Example</h3>
+<p>(Rats on diets in the previous section)</p>
+<ol type="1">
+<li>Step by step</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb203"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb203-1"><a href="#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate LSD</span></span>
+<span id="cb203-2"><a href="#cb203-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(dtf2)</span>
+<span id="cb203-3"><a href="#cb203-3" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">nlevels</span>(dtf2<span class="sc">$</span>diet)</span>
+<span id="cb203-4"><a href="#cb203-4" aria-hidden="true" tabindex="-1"></a>dfree <span class="ot">&lt;-</span> n <span class="sc">-</span> k</span>
+<span id="cb203-5"><a href="#cb203-5" aria-hidden="true" tabindex="-1"></a>t_critical <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> dfree, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb203-6"><a href="#cb203-6" aria-hidden="true" tabindex="-1"></a>sp2 <span class="ot">&lt;-</span> <span class="fu">sum</span>((<span class="dv">3</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">apply</span>(dtf, <span class="dv">2</span>, sd) <span class="sc">^</span> <span class="dv">2</span>)<span class="sc">/</span> dfree</span>
+<span id="cb203-7"><a href="#cb203-7" aria-hidden="true" tabindex="-1"></a>LSD <span class="ot">&lt;-</span> t_critical <span class="sc">*</span> <span class="fu">sqrt</span>(sp2 <span class="sc">*</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>))</span>
+<span id="cb203-8"><a href="#cb203-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate |mean_x1-mean_x2|</span></span>
+<span id="cb203-9"><a href="#cb203-9" aria-hidden="true" tabindex="-1"></a>dtf_groupmean <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(dtf)</span>
+<span id="cb203-10"><a href="#cb203-10" aria-hidden="true" tabindex="-1"></a>paired_groupmean <span class="ot">&lt;-</span> <span class="fu">combn</span>(dtf_groupmean, <span class="dv">2</span>)</span>
+<span id="cb203-11"><a href="#cb203-11" aria-hidden="true" tabindex="-1"></a>paired_groupmean[<span class="dv">2</span>, ] <span class="sc">-</span> paired_groupmean[<span class="dv">1</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30 35  5</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Step by step by using loop</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb205"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb205-1"><a href="#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb205-2"><a href="#cb205-2" aria-hidden="true" tabindex="-1"></a>dtf_sm <span class="ot">&lt;-</span> dtf2 <span class="sc">|&gt;</span> </span>
+<span id="cb205-3"><a href="#cb205-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(diet) <span class="sc">|&gt;</span> </span>
+<span id="cb205-4"><a href="#cb205-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">length</span>(wg), <span class="at">sd =</span> <span class="fu">sd</span>(wg), <span class="at">mean =</span> <span class="fu">mean</span>(wg))</span>
+<span id="cb205-5"><a href="#cb205-5" aria-hidden="true" tabindex="-1"></a>sp2 <span class="ot">&lt;-</span> <span class="fu">sum</span>((dtf_sm<span class="sc">$</span>n <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> dtf_sm<span class="sc">$</span>sd <span class="sc">^</span> <span class="dv">2</span> )<span class="sc">/</span> dfree</span>
+<span id="cb205-6"><a href="#cb205-6" aria-hidden="true" tabindex="-1"></a>LSD <span class="ot">&lt;-</span> t_critical <span class="sc">*</span> <span class="fu">sqrt</span>(sp2 <span class="sc">*</span> <span class="fu">sum</span>(<span class="dv">1</span> <span class="sc">/</span> dtf_sm<span class="sc">$</span>n))</span>
+<span id="cb205-7"><a href="#cb205-7" aria-hidden="true" tabindex="-1"></a>paired_groupmean <span class="ot">&lt;-</span> <span class="fu">combn</span>(dtf_sm<span class="sc">$</span>mean, <span class="dv">2</span>)</span>
+<span id="cb205-8"><a href="#cb205-8" aria-hidden="true" tabindex="-1"></a>paired_groupmean[<span class="dv">2</span>, ] <span class="sc">-</span> paired_groupmean[<span class="dv">1</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30 35  5</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>One step</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb207"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb207-1"><a href="#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span>
+<span id="cb207-2"><a href="#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistic analysis</span></span>
+<span id="cb207-3"><a href="#cb207-3" aria-hidden="true" tabindex="-1"></a><span class="fu">LSD.test</span>(wg_aov, <span class="st">"diet"</span>, <span class="at">p.adj =</span> <span class="st">"bonferroni"</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$statistics
+  MSerror Df     Mean       CV  t.value      MSD
+       25  6 116.6667 4.285714 3.287455 13.42098
+
+$parameters
+        test  p.ajusted name.t ntr alpha
+  Fisher-LSD bonferroni   diet   3  0.05
+
+$means
+       wg std r       LCL      UCL Min Max   Q25 Q50   Q75
+diet1  95   5 3  87.93637 102.0636  90 100  92.5  95  97.5
+diet2 125   5 3 117.93637 132.0636 120 130 122.5 125 127.5
+diet3 130   5 3 122.93637 137.0636 125 135 127.5 130 132.5
+
+$comparison
+NULL
+
+$groups
+       wg groups
+diet3 130      a
+diet2 125      a
+diet1  95      b
+
+attr(,"class")
+[1] "group"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb209"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb209-1"><a href="#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb209-2"><a href="#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="fu">LSD.test</span>(wg_aov, <span class="st">"diet"</span>, <span class="at">p.adj =</span> <span class="st">"bonferroni"</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb209-3"><a href="#cb209-3" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ENV222-note_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Conclusion: At <span class="math inline">\(\alpha = 0.05\)</span>, Diet 2 and Diet 3 are significantly different from Diet 1 in the mean weight gain, while Diet 2 is not significantly different from Diet 3.</p>
+</section>
+</section>
+<section id="bonferroni-t-test" class="level2">
+<h2 class="anchored" data-anchor-id="bonferroni-t-test"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.3</strong></span> Bonferroni t-test</h2>
+<section id="concept-1" class="level3">
+<h3 class="anchored" data-anchor-id="concept-1"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.3.1</strong></span> Concept</h3>
+<p>A multiple-comparison post-hoc test, which sets the significance cut off at <span class="math inline">\(\alpha/m\)</span> for each comparison, where <span class="math inline">\(m\)</span> represents <span style="color:red">the <u>number</u> of comparisons we apply</span>.</p>
+<p><span style="color:#880000">Overall chance of making a Type I error:</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb210"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb210-1"><a href="#cb210-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb210-2"><a href="#cb210-2" aria-hidden="true" tabindex="-1"></a>siglevel <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb210-3"><a href="#cb210-3" aria-hidden="true" tabindex="-1"></a>Type_I <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (<span class="dv">1</span> <span class="sc">-</span> (siglevel <span class="sc">/</span> m)) <span class="sc">^</span> m</span>
+<span id="cb210-4"><a href="#cb210-4" aria-hidden="true" tabindex="-1"></a>Type_I</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 0.05000000 0.04937500 0.04917130 0.04907029 0.04900995 0.04896984
+  [7] 0.04894124 0.04891982 0.04890317 0.04888987 0.04887899 0.04886993
+ [13] 0.04886227 0.04885571 0.04885002 0.04884504 0.04884065 0.04883675
+ [19] 0.04883326 0.04883012 0.04882728 0.04882470 0.04882235 0.04882019
+ [25] 0.04881820 0.04881637 0.04881467 0.04881309 0.04881162 0.04881025
+ [31] 0.04880897 0.04880777 0.04880664 0.04880558 0.04880458 0.04880363
+ [37] 0.04880274 0.04880189 0.04880109 0.04880033 0.04879960 0.04879891
+ [43] 0.04879825 0.04879762 0.04879702 0.04879644 0.04879589 0.04879536
+ [49] 0.04879486 0.04879437 0.04879390 0.04879346 0.04879302 0.04879261
+ [55] 0.04879221 0.04879182 0.04879145 0.04879109 0.04879074 0.04879040
+ [61] 0.04879008 0.04878976 0.04878946 0.04878916 0.04878888 0.04878860
+ [67] 0.04878833 0.04878807 0.04878782 0.04878757 0.04878733 0.04878710
+ [73] 0.04878687 0.04878665 0.04878644 0.04878623 0.04878602 0.04878583
+ [79] 0.04878563 0.04878544 0.04878526 0.04878508 0.04878491 0.04878474
+ [85] 0.04878457 0.04878441 0.04878425 0.04878409 0.04878394 0.04878379
+ [91] 0.04878365 0.04878350 0.04878337 0.04878323 0.04878310 0.04878297
+ [97] 0.04878284 0.04878271 0.04878259 0.04878247</code></pre>
+</div>
+</div>
+</section>
+<section id="example-1" class="level3">
+<h3 class="anchored" data-anchor-id="example-1"><span style="color:gray; font-family:Microsoft JhengHei;"><strong>7.3.2</strong></span> Example</h3>
+<p>(Rats on diets in the previous section)</p>
+<ol type="1">
+<li>Step by step</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb212"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb212-1"><a href="#cb212-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">choose</span>(<span class="fu">nlevels</span>(dtf2<span class="sc">$</span>diet), <span class="dv">2</span>)  <span class="co"># 1:2 or 1:3 or 2:3</span></span>
+<span id="cb212-2"><a href="#cb212-2" aria-hidden="true" tabindex="-1"></a>alpha_cor <span class="ot">&lt;-</span> <span class="fl">0.05</span> <span class="sc">/</span> m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb213"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb213-1"><a href="#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pairwise comparison between diet1 and diet2</span></span>
+<span id="cb213-2"><a href="#cb213-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(wg <span class="sc">~</span> diet, dtf2, <span class="at">subset =</span> diet <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"diet1"</span>, <span class="st">"diet2"</span>), <span class="at">conf.level =</span> <span class="dv">1</span> <span class="sc">-</span> alpha_cor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  wg by diet
+t = -7.3485, df = 4, p-value = 0.001826
+alternative hypothesis: true difference in means between group diet1 and group diet2 is not equal to 0
+98.33333 percent confidence interval:
+ -46.16984 -13.83016
+sample estimates:
+mean in group diet1 mean in group diet2 
+                 95                 125 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb215"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb215-1"><a href="#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pairwise comparison between diet1 and diet3</span></span>
+<span id="cb215-2"><a href="#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(wg <span class="sc">~</span> diet, dtf2, <span class="at">subset =</span> diet <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"diet1"</span>, <span class="st">"diet3"</span>), <span class="at">conf.level =</span> <span class="dv">1</span> <span class="sc">-</span> alpha_cor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  wg by diet
+t = -8.5732, df = 4, p-value = 0.001017
+alternative hypothesis: true difference in means between group diet1 and group diet3 is not equal to 0
+98.33333 percent confidence interval:
+ -51.16984 -18.83016
+sample estimates:
+mean in group diet1 mean in group diet3 
+                 95                 130 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb217"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb217-1"><a href="#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pairwise comparison between diet2 and diet3</span></span>
+<span id="cb217-2"><a href="#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(wg <span class="sc">~</span> diet, dtf2, <span class="at">subset =</span> diet <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"diet2"</span>, <span class="st">"diet3"</span>), <span class="at">conf.level =</span> <span class="dv">1</span> <span class="sc">-</span> alpha_cor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  wg by diet
+t = -1.2247, df = 4, p-value = 0.2879
+alternative hypothesis: true difference in means between group diet2 and group diet3 is not equal to 0
+98.33333 percent confidence interval:
+ -21.16984  11.16984
+sample estimates:
+mean in group diet2 mean in group diet3 
+                125                 130 </code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>One step</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb219"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb219-1"><a href="#cb219-1" aria-hidden="true" tabindex="-1"></a>(diet_pt <span class="ot">&lt;-</span> <span class="fu">pairwise.t.test</span>(dtf2<span class="sc">$</span>wg, dtf2<span class="sc">$</span>diet, <span class="at">pool.sd =</span> <span class="cn">FALSE</span>,<span class="at">var.equal =</span> <span class="cn">TRUE</span>, <span class="at">p.adj =</span> <span class="st">"none"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pairwise comparisons using t tests with non-pooled SD 
+
+data:  dtf2$wg and dtf2$diet 
+
+      diet1  diet2 
+diet2 0.0018 -     
+diet3 0.0010 0.2879
+
+P value adjustment method: none </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb221"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb221-1"><a href="#cb221-1" aria-hidden="true" tabindex="-1"></a>diet_pt<span class="sc">$</span>p.value <span class="sc">&lt;</span> <span class="fl">0.05</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      diet1 diet2
+diet2  TRUE    NA
+diet3  TRUE FALSE</code></pre>
+</div>
+</div>
+<p>Conclusion: At <span class="math inline">\(\alpha = 0.05\)</span>, Diet 2 and Diet 3 are significantly different from Diet 1 in the mean weight gain, while Diet 2 is not significantly different from Diet 3.</p>
+</section>
+</section>
+</section>
+<section id="manova-ancova-mancova" class="level1">
+<h1><span style="color:gray; font-family:Microsoft JhengHei;"><strong>8</strong></span> MANOVA, ANCOVA, MANCOVA</h1>
+<p>To be continue…</p>
+</section>
+<section id="sessioninfo" class="level1">
+<h1><span style="color:green">SessionInfo:</span></h1>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>R version 4.2.3 (2023-03-15 ucrt)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 19044)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=Chinese (Simplified)_China.utf8 
+[2] LC_CTYPE=Chinese (Simplified)_China.utf8   
+[3] LC_MONETARY=Chinese (Simplified)_China.utf8
+[4] LC_NUMERIC=C                               
+[5] LC_TIME=Chinese (Simplified)_China.utf8    
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] agricolae_1.3-5 openair_2.16-0  lubridate_1.9.2 forcats_1.0.0  
+ [5] stringr_1.5.0   dplyr_1.1.0     purrr_1.0.1     readr_2.1.4    
+ [9] tibble_3.1.8    tidyverse_2.0.0 latex2exp_0.9.6 patchwork_1.1.2
+[13] ggplot2_3.4.1   Epi_2.47        tidyr_1.3.0     magrittr_2.0.3 
+[17] knitr_1.42     
+
+loaded via a namespace (and not attached):
+ [1] maps_3.4.1          jsonlite_1.8.4      splines_4.2.3      
+ [4] shiny_1.7.4         highr_0.10          latticeExtra_0.6-30
+ [7] yaml_2.3.7          numDeriv_2016.8-1.1 pillar_1.8.1       
+[10] lattice_0.20-45     glue_1.6.2          digest_0.6.31      
+[13] promises_1.2.0.1    RColorBrewer_1.1-3  colorspace_2.1-0   
+[16] httpuv_1.6.9        cmprsk_2.2-11       htmltools_0.5.4    
+[19] Matrix_1.5-3        plyr_1.8.8          klaR_1.7-2         
+[22] pkgconfig_2.0.3     labelled_2.10.0     haven_2.5.1        
+[25] questionr_0.7.8     xtable_1.8-4        scales_1.2.1       
+[28] later_1.3.0         jpeg_0.1-10         tzdb_0.3.0         
+[31] timechange_0.2.0    combinat_0.0-8      mgcv_1.8-42        
+[34] generics_0.1.3      farver_2.1.1        ellipsis_0.3.2     
+[37] etm_1.1.1           withr_2.5.0         hexbin_1.28.3      
+[40] cli_3.6.1           mime_0.12           survival_3.5-3     
+[43] deldir_1.0-6        evaluate_0.20       fansi_1.0.3        
+[46] nlme_3.1-162        MASS_7.3-58.2       tools_4.2.3        
+[49] data.table_1.14.8   hms_1.1.2           lifecycle_1.0.3    
+[52] interp_1.1-3        munsell_0.5.0       cluster_2.1.4      
+[55] compiler_4.2.3      rlang_1.1.0         grid_4.2.3         
+[58] rstudioapi_0.14     htmlwidgets_1.6.1   miniUI_0.1.1.1     
+[61] labeling_0.4.2      rmarkdown_2.21      gtable_0.3.3       
+[64] AlgDesign_1.2.1     R6_2.5.1            zoo_1.8-11         
+[67] fastmap_1.1.0       utf8_1.2.3          stringi_1.7.12     
+[70] parallel_4.2.3      Rcpp_1.0.10         vctrs_0.5.2        
+[73] mapproj_1.2.11      png_0.1-8           tidyselect_1.2.0   
+[76] xfun_0.37          </code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
