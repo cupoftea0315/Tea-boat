@@ -141,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2023.04.01</p>
+      <p class="date">2023.04.02</p>
     </div>
   </div>
   
@@ -154,43 +154,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {
-  background-color: white;
-  color: black;
-}
-.dark-mode {
-  background-color: black;
-  color: white;
-}
-/* Add this CSS */
-#myBtn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: lightgray;
-}
-/* Add this CSS */
-#myBtn:before {
-    content:"☀";
-}
-/* Add this CSS */
-.dark-mode #myBtn:before {
-    content:"🌙";
-}
-</style>
+    body {
+      background-color: white;
+      color: black;
+    }
+    .dark-mode {
+      background-color: black;
+      color: white;
+    }
+    .light-code {
+      color: black;
+    }
+    .dark-code {
+      color: white;
+    }
+    .quarto-output pre:not([class*="language-"]) {
+      background-color: transparent;
+      color: inherit;
+    }
+    .quarto-output pre[class*="language-"] {
+      background-color: #F5F5F5;
+      color: black;
+    }
+    .dark-mode .quarto-output pre[class*="language-"] {
+      background-color: #2B2B2B;
+      color: white;
+    }
+    /* Add this CSS */
+    #myBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: lightgray;
+    }
+    /* Add this CSS */
+    #myBtn:before {
+      content: "☀";
+    }
+    /* Add this CSS */
+    .dark-mode #myBtn:before {
+      content: "🌙";
+    }
+  </style>
 
 
 <button id="myBtn" onclick="myFunction()">
 </button>
 <script>
-function myFunction() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
-}
-</script>
+    function myFunction() {
+      var element = document.body;
+      element.classList.toggle("dark-mode");
+      var codeBlocks = document.querySelectorAll(".quarto-output pre[class*='language-']");
+      codeBlocks.forEach(function(block) {
+        block.classList.toggle("light-code");
+        block.classList.toggle("dark-code");
+      });
+    }
+  </script>
 
 <a href="#" id="back-to-top" title="Back to top">^</a>
 <style>
@@ -227,7 +250,7 @@ function myFunction() {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.time</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2023-04-01 21:59:46 CST"</code></pre>
+<pre><code>[1] "2023-04-02 18:29:52 CST"</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -236,7 +259,7 @@ function myFunction() {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(<span class="fu">Sys.Date</span>(), <span class="at">format =</span> <span class="st">'%Y, %B, %d, %A'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2023, 四月, 01, 星期六"</code></pre>
+<pre><code>[1] "2023, 四月, 02, 星期日"</code></pre>
 </div>
 </div>
 <ol start="3" type="1">
@@ -247,15 +270,15 @@ function myFunction() {
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>t2 <span class="ot">&lt;-</span> <span class="fu">strptime</span>( <span class="st">"2022-9-13 15:00:00"</span>, <span class="at">format=</span><span class="st">"%Y-%m-%d %H:%M:%S"</span> )</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(<span class="at">time1 =</span> t1, <span class="at">time2 =</span> t2, <span class="at">units =</span> <span class="st">'secs'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 17305187 secs</code></pre>
+<pre><code>Time difference of 17378993 secs</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(<span class="at">time1 =</span> t1, <span class="at">time2 =</span> t2, <span class="at">units =</span> <span class="st">'days'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 200.2915 days</code></pre>
+<pre><code>Time difference of 201.1457 days</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">difftime</span>(<span class="at">time1 =</span> t1, <span class="at">time2 =</span> t2, <span class="at">units =</span> <span class="st">'hours'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time difference of 4806.996 hours</code></pre>
+<pre><code>Time difference of 4827.498 hours</code></pre>
 </div>
 </div>
 <ol start="4" type="1">

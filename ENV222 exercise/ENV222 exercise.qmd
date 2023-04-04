@@ -13,46 +13,70 @@ fontfamily: Tahoma
 ---
 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  background-color: white;
-  color: black;
-}
-.dark-mode {
-  background-color: black;
-  color: white;
-}
-/* Add this CSS */
-#myBtn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: lightgray;
-}
-/* Add this CSS */
-#myBtn:before {
-    content:"☀";
-}
-/* Add this CSS */
-.dark-mode #myBtn:before {
-    content:"🌙";
-}
-</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: white;
+      color: black;
+    }
+    .dark-mode {
+      background-color: black;
+      color: white;
+    }
+    .light-code {
+      color: black;
+    }
+    .dark-code {
+      color: white;
+    }
+    .quarto-output pre:not([class*="language-"]) {
+      background-color: transparent;
+      color: inherit;
+    }
+    .quarto-output pre[class*="language-"] {
+      background-color: #F5F5F5;
+      color: black;
+    }
+    .dark-mode .quarto-output pre[class*="language-"] {
+      background-color: #2B2B2B;
+      color: white;
+    }
+    /* Add this CSS */
+    #myBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: lightgray;
+    }
+    /* Add this CSS */
+    #myBtn:before {
+      content: "☀";
+    }
+    /* Add this CSS */
+    .dark-mode #myBtn:before {
+      content: "🌙";
+    }
+  </style>
 </head>
 
 <body>
-<button id="myBtn" onclick="myFunction()"></button>
-<script>
-function myFunction() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
-}
-</script>
+  <button id="myBtn" onclick="myFunction()"></button>
+  <script>
+    function myFunction() {
+      var element = document.body;
+      element.classList.toggle("dark-mode");
+      var codeBlocks = document.querySelectorAll(".quarto-output pre[class*='language-']");
+      codeBlocks.forEach(function(block) {
+        block.classList.toggle("light-code");
+        block.classList.toggle("dark-code");
+      });
+    }
+  </script>
 </body>
+
 
 <a href="#" id="back-to-top" title="Back to top">^</a>
 <style>

@@ -1,6 +1,6 @@
 ---
 title: "**ENV222 NOTE**"
-subtitle: "*R in statistics*"
+subtitle: "*R in statistics (Advanced)*"
 author:
   - "TC-tea"
 date: "`r Sys.Date()`"
@@ -10,48 +10,56 @@ toc: true
 toc-location: left
 fontsize: 12pt
 fontfamily: Tahoma
+theme: ""
 ---
 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  background-color: white;
-  color: black;
-}
-.dark-mode {
-  background-color: black;
-  color: white;
-}
-/* Add this CSS */
-#myBtn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  border: none;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: lightgray;
-}
-/* Add this CSS */
-#myBtn:before {
-    content:"☀";
-}
-/* Add this CSS */
-.dark-mode #myBtn:before {
-    content:"🌙";
-}
-</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: white;
+      color: black;
+    }
+    .dark-mode {
+      background-color: black;
+      color: white;
+    }
+    /* Add this CSS */
+    #myBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: lightgray;
+    }
+    /* Add this CSS */
+    #myBtn:before {
+      content:"☀";
+    }
+    /* Add this CSS */
+    .dark-mode #myBtn:before {
+      content:"🌙";
+    }
+  </style>
 </head>
 
 <body>
-<button id="myBtn" onclick="myFunction()"></button>
-<script>
-function myFunction() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
-}
-</script>
+  <button id="myBtn" onclick="myFunction()"></button>
+  <script>
+    function myFunction() {
+       var element = document.body;
+       element.classList.toggle("dark-mode");
+       if (element.classList.contains("dark-mode")) {
+         document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1c1c1c");
+         document.querySelector('meta[name="theme"]').setAttribute("content", "cyborg");
+       } else {
+         document.querySelector('meta[name="theme-color"]').setAttribute("content", "");
+         document.querySelector('meta[name="theme"]').setAttribute("content", "spacelab");
+       }
+    }
+  </script>
 </body>
 
 <a href="#" id="back-to-top" title="Back to top">^</a>
@@ -71,7 +79,8 @@ function myFunction() {
     }
 </style>
 
-👉🏻[Click to enter the exercise section](../ENV222 exercise/ENV222 exercise.html)
+👉🏻[Click to enter the ENV222 exercise section](../ENV222 exercise/ENV222 exercise.html)<br>
+👉🏻[Click to enter the ENV221 note section](../ENV221 note/ENV221 note.html)
 
 # <span style="color:gray; font-family:Microsoft JhengHei;">**1**</span> R-markdown syntax
 
@@ -628,7 +637,7 @@ mydata %>% summarise(
 )
 ```
 
-# <span style="color:gray; font-family:Microsoft JhengHei;">**7**</span> ANOVA Post-hoc tests
+# <span style="color:gray; font-family:Microsoft JhengHei;">**7**</span> ANOVA (Post-hoc tests)
 
 ## <span style="color:gray; font-family:Microsoft JhengHei;">**7.1**</span> Post-hoc tests
 
@@ -740,9 +749,434 @@ diet_pt$p.value < 0.05
 ```
 Conclusion: At $\alpha = 0.05$, Diet 2 and Diet 3 are significantly different from Diet 1 in the mean weight gain, while Diet 2 is not significantly different from Diet 3.
 
-# <span style="color:gray; font-family:Microsoft JhengHei;">**8**</span> MANOVA, ANCOVA, MANCOVA
+# <span style="color:gray; font-family:Microsoft JhengHei;">**8**</span> MANOVA
+<center>![One-Way ANOVA (ENV221)](images/One-Way ANOVA.jpg)</center>
+<center>![Two-Way ANOVA (ENV221)](images/Two-Way ANOVA.jpg)</center>
+<center>[The Differences Between ANOVA, ANCOVA, MANOVA, and MANCOVA](https://www.statology.org/differences-between-anova-ancova-manova-mancova/)</center>
 
-To be continue...
+## <span style="color:gray; font-family:Microsoft JhengHei;">**8.1**</span> Definition of MANOVA
+
+**Univariate Analysis of Variance (ANOVA):**
+- one dependent variable (continuous) ~ one or multiple independent variables (categorical).  
+**Multivariate Analysis of Variance (MANOVA)**
+- multiple dependent variables (continuous) ~ one or multiple independent variables (categorical).  
+Comparing multivariate sample means. It uses the covariance between outcome variables in testing the statistical significance of the mean differences when there are multiple dependent variables.  
+Merit of MANOVA:
+1. Reduce the Type I error
+2. It allows for the analysis of multiple dependent variables simultaneously
+3. It provides information about the strength and direction of relationships
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**8.2**</span> Coding and visualization
+
+**Example:** Influence of <u>teaching methods</u> on student <u>satisfaction scores</u> and <u>exam scores</u>.
+```{r, fig.width = 6, fig.height = 4, fig.align='center'}
+dtf <- read.csv('data/teaching_methods.csv')
+head(dtf, 3)
+# ANOVA between Test and Method
+summary(aov(Test ~ Method, data = dtf))
+# ANOVA between Satisfaction and Method
+summary(aov(Satisfaction ~ Method, data = dtf))
+# Visualization with Scatter plot
+library(ggplot2)
+library(tidyr)
+dtf |> pivot_longer(-Method) |> 
+  ggplot() + 
+  geom_dotplot(aes(x = Method, y = value, group = Method), binaxis = "y", stackdir = "center") + 
+  facet_wrap(name~.)
+# Visualization with Box plot
+par(mfrow = c(1, 3))
+boxplot(Test ~ Method, data = dtf)
+boxplot(Satisfaction ~ Method, data = dtf)
+plot(dtf$Satisfaction, dtf$Test, col = dtf$Method, pch = 16, xlab = 'Satisfaction', ylab = 'Test')
+# MANOVA method: use manova() function with multiple response variables ~ one or multiple factor
+# column bind way
+tm_manova <- manova(cbind(dtf$Test, dtf$Satisfaction) ~ dtf$Method)
+# matrix way
+tm_manova <- manova(as.matrix(dtf[, c('Test', 'Satisfaction')]) ~ dtf$Method)
+summary(tm_manova)
+```
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**8.3**</span> One-way MANOVA
+
+<center>![One-way MANOVA](images/One-way MANOVA.jpg)</center>
+**Example:** The iris dataset. Do the species have influence on the sepal size?
+```{r, fig.align='center'}
+# Visualization
+library(ggplot2)
+library(tidyr)
+iris[, c('Species', 'Sepal.Length', 'Sepal.Width')] |> 
+  pivot_longer(cols = c(Sepal.Length, Sepal.Width)) |> 
+  ggplot() +
+  geom_boxplot(aes(Species, value, fill = name)) +
+  labs(y = 'Size (cm)', fill = '')
+library(gplots)
+par(mfrow = c(1, 2))
+plotmeans(iris$Sepal.Length ~ iris$Species)
+plotmeans(iris$Sepal.Width ~ iris$Species)
+```
+**Hypothesis:** multivariate normality test
+- $H_0$: The population means of the sepal length and the sepal width are not different across the species.
+```{r}
+# Summary MANOVA result with different test method
+SepalSize <- cbind(iris$Sepal.Length, iris$Sepal.Width)
+iris_manova <- manova(SepalSize ~ iris$Species)
+summary(iris_manova, test = 'Pillai')  # default
+summary(iris_manova, test = 'Wilks')
+summary(iris_manova, test = 'Roy')
+summary(iris_manova, test = 'Hotelling-Lawley')
+# Univariate ANOVAs for each dependent variable
+summary.aov(iris_manova)
+```
+**Conclusion:** The species has a statistically significant effect on the sepal width and sepal length.
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**8.4**</span> Post-hoc test
+
+**Example:** after One-way MANOVA gives a significant result, which group(s) is/are different from other(s)?  
+**Hypothesis:** Linear Discriminant Analysis (LDA)
+```{r, fig.align='center'}
+# Visualization
+library(MASS)
+iris_lda <- lda(iris$Species ~ SepalSize, CV = FALSE)
+plot_lda <- data.frame(Species = iris$Species, lda = predict(iris_lda)$x)
+ggplot(plot_lda) + geom_point(aes(x = lda.LD1, y = lda.LD2, colour = Species))
+```
+**Conclusion:** The sepal size of the setosa species is different from other species.
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**8.5**</span> Multivariate normality
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**8.5.1**</span> Shapiro-Wilk test
+
+**Hypothesis:**  
+$H_0$: The variable follows a normal distribution
+```{r}
+library(rstatix)
+iris |>  
+  group_by(Species) |>  
+  shapiro_test(Sepal.Length, Sepal.Width)
+```
+Tip:
+
+- <span style="color:green">If the sample size is large (say n > 50), the visual approaches such as QQ-plot and histogram will be better for assessing the normality assumption.</span>
+```{r, fig.align='center'}
+iris[, c('Species', 'Sepal.Length', 'Sepal.Width')] |> 
+  pivot_longer(cols = c(Sepal.Length, Sepal.Width)) |> 
+  ggplot() +
+  geom_histogram(aes(value)) +
+  facet_grid(name ~ Species)
+```
+**Conclusion:** As $p>0.05$, the sepal length and the width for each species are normally distributed.
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**8.5.2**</span> Mardia’s skewness and kurtosis test
+
+**Hypothesis:**  
+$H_0$: The variables follow a multivariate normal distribution
+```{r}
+library(mvnormalTest)
+mardia(iris[, c('Sepal.Length', 'Sepal.Width')])$mv.test
+```
+Tip:
+
+- <span style="color:green">When n > 20 for each combination of the independent and dependent variable, the multivariate normality can be assumed (Multivariate Central Limit Theorem).</span>  
+
+**Conclusion:** As $p>0.05$, the sepal length and the width follow a multivariate normal distribution.
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**8.5.3**</span> Homogeneity of the variance-covariance matrix
+**Main:**  
+Box’s M test: Use a lower $\alpha$ level such as $\alpha = 0.001$ to assess the $p$ value for significance.  
+**Hypothesis:**  
+$H_0$: The variance-covariance matrices are equal for each combination formed by each group in the independent variable.
+```{r}
+library(biotools)
+boxM(cbind(iris$Sepal.Length, iris$Sepal.Width), iris$Species)
+```
+**Conclusion:** As $p < 0.001$, the variance-covariance matrices for the sepal length and width are not equal for each combination formed by each species.
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**8.5.4**</span> Multivariate outliers
+- [MANOVA is highly sensitive to outliers and may produce Type I or II errors.]{style="color:red"}
+- Multivariate outliers can be detected using the Mahalanobis Distance test. The larger the Mahalanobis Distance, the more likely it is an outlier.
+```{r}
+library(rstatix)
+iris_outlier <- mahalanobis_distance(iris[, c('Sepal.Length', 'Sepal.Width')])
+head(iris_outlier, 5)
+```
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**8.5.5**</span> Linearity
+- Or test the regression or the slope (ENV221)
+```{r}
+# Visualize the pairwise scatterplot for the dependent variable for each group
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() +
+  geom_smooth(method = 'lm') +
+  facet_wrap(Species ~ .)
+```
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**8.5.6**</span> Multicollinearity
+Correlation between the dependent variable.  
+For three or more dependent variables, use a correlation matrix or variance inflation factor (VIF).
+```{r}
+# Test the correlation
+cor.test(x = iris$Sepal.Length, y = iris$Sepal.Width)
+# Visualization
+ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
+  geom_point() +
+  geom_smooth(method = 'lm')
+```
+- If $|r|$ > 0.9, there is multicollinearity.
+- If r is too low, perform separate univariate ANOVA for each dependent variable.
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**8.6**</span> Two-way MANOVA
+
+<center>![Two-way MANOVA](images/Two-way MANOVA.jpg)</center>
+**Example:** Plastic. Do the rate of extrusion and the additive have influence on the plastic quality?
+```{r}
+# Summary MANOVA result
+data('Plastic', package = 'heplots')
+Plastic_matrix <- as.matrix(Plastic[, c('tear','gloss','opacity')])
+Plastic_manova <- manova(Plastic_matrix ~ Plastic$rate * Plastic$additive)
+summary(Plastic_manova)
+# Univariate ANOVAs for each dependent variable
+summary.aov(Plastic_manova)
+```
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**9**</span> ANCOVA
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**9.1**</span> Definition of ANCOVA
+<span style="color:red">Test whether the independent variable(s) has a significant influence on the dependent variable, excluding the influence of the covariate (preferably highly correlated with the dependent variable)</span>
+$$Y_{ij} = (\mu+\tau_{i})+\beta(x_{ij}-\bar{x})+\epsilon_{ij}$$
+
+- $Y_{ij}$: the j-th observation under the i-th categorical group
+- $\mu$: the population mean
+- $i$: groups, 1,2, …
+- $j$: observations, 1,2,…
+- $\tau_i$: an adjustment to the y intercept for the i-th regression line
+- $\mu + \tau_i$: the intercept for group i
+- $\beta$: the slope of the line
+- $x_{ij}$: the j-th observation of the continuous variable under the i-th group
+- $\bar x$: the global mean of the variable x
+- $\epsilon _{ij}$: the associated unobserved error
+
+**Analysis of covariance (ANCOVA):**
+
+- Dependent variable (DV): One continuous variable
+- Independent variables (IVs): One or multiple categorical variables, one or multiple continuous variables (covariate, CV)
+
+**Covariate (CV):**
+
+- An independent variable that is not manipulated by experimenters but still influences experimental results.
+
+**Example:**
+
+<center>![Model simplification](images/ANCOVA-plot.png)</center>
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**9.2**</span> One-way ANCOVA
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**9.2.1**</span> Question
+
+<center>![One-Way ANCOVA](images/One-Way ANOVA.jpg)</center>
+
+**Example 1:** Does <u>grazing</u> have influence on the fruit production? Are grazed plants have more fruit <u>production</u> than ungrazed ones?
+
+- Independent variable: 
+   - Grazing (categorical)
+- Dependent variable: 
+   - Fruit production (continuous)
+```{r, fig.width = 6, fig.height = 4, fig.align='center'}
+df1 <- read.table("data/ipomopsis.txt", header = TRUE, stringsAsFactors = TRUE)
+head(df1, 5)
+tapply(df1$Fruit,df1$Grazing, mean)
+library(ggplot2)
+ggplot(df1) + geom_boxplot(aes(Fruit, Grazing))
+# Hypothesis test
+t.test(Fruit ~ Grazing, data = df1, alternative = c("greater"))
+```
+**Example 2:** What is the influence of <u>grazing</u> and <u>root diameter</u> on the fruit production of a plant?
+
+Independent variables:
+
+- grazing (categorical: grazed or ungrazed)
+- root diameter (continuous, mm, covariate)
+
+Dependent variable:
+
+- fruit production (mg)
+
+```{r}
+# Visualization
+ggplot(df1, aes(Root, Fruit))+
+  geom_point() +
+  geom_smooth(method = 'lm') +
+  geom_point(aes(color = Grazing)) + 
+  geom_smooth(aes(color = Grazing), method = 'lm')
+```
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**9.2.2**</span> Maximal model
+
+| Symbol | Meaning |
+|:---:|:-----|
+| `~` | Separating DV (<span style="color:red">left</span>) and IV (<span style="color:red">right</span>) |
+| `:` | Interaction effect of two factors |
+| `*` | Main effect of the two factors and the interaction effect. `f1 * f2` is equivalent to `f1 + f2 + f1:f2` |
+| `^` | Square the sum of several terms. The main effect of these terms and the interaction between them |
+| `.` | All variables except the DV |
+```{r}
+# The maximal model
+df1_ancova <- lm(Fruit ~ Grazing * Root, data = df1)
+summary(df1_ancova)
+# The ANOVA table for the maximal model
+anova(df1_ancova)
+# other method to see the ANOVA table 
+df1_aov <- aov(Fruit ~ Grazing * Root, data = df1)
+summary(df1_aov)
+summary.aov(df1_ancova)
+```
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**9.2.3**</span> Minimal model
+
+```{r}
+# Delete the interaction factor 
+df1_ancova2 <- update(df1_ancova, ~ . - Grazing:Root)
+summary(df1_ancova2)
+# Compare the simplified model with the maximal model
+anova(df1_ancova, df1_ancova2)
+# Delete the grazing factor 
+df1_ancova3 <- update(df1_ancova2, ~ . - Grazing)
+summary(df1_ancova3)
+# Compare the two models
+anova(df1_ancova2, df1_ancova3)
+summary(df1_ancova2)
+anova(df1_ancova2)
+```
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**9.2.4**</span> One step
+
+Criterion: Akaike’s information criterion (AIC). The model is <u>worse</u> if AIC gets <u>greater</u>.
+```{r}
+step(df1_ancova)
+```
+
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**9.2.5**</span> Result
+
+```{r}
+# Extracting formulas from linear regression models
+equatiomatic::extract_eq(df1_ancova2, use_coefs = TRUE)
+```
+<a id="diagnostic statistical data text table"></a>
+```{r}
+# Create a diagnostic statistical data text table
+stargazer::stargazer(df1_ancova2, type = 'text')
+```
+<details>
+  <summary>The meaning of each parameter in this table</summary>
+- Dependent variable: The name of the dependent variable.
+- Independent variables: The names of the independent variables.
+- Coefficients: Regression coefficients, indicating the degree to which an independent variable affects the dependent variable when it increases by one unit.
+- Standard errors: Standard error of regression coefficients, measuring the stability of regression coefficients.
+- t-statistics: t-value of regression coefficients, representing whether a regression coefficient is significantly different from zero and has a significant impact on the dependent variable.
+- p-values: Significance level of regression coefficients, usually used to determine whether a regression coefficient is significantly different from zero. The smaller the p-value, the more significant the regression coefficient is considered to be.
+- Observations: Sample size.
+- R2: Goodness-of-fit measure that represents how much variance in explanatory variables can be explained by model. A higher value indicates better fit between model and data
+- Adjusted R2：A modified version of R2 that takes into account number of independent variables for greater accuracy
+- Residual standard error：Standard deviation or dispersion measure for residuals; smaller values indicate better model fit
+- F-statistic：Statistical test used to evaluate overall goodness-of-fit for linear models 
+- df：Degrees of freedom 
+- Note:p<0.1,p<0.05,p<0.01 : When p-value is less than 0.1, 0.05 or 0.01 respectively,* , ** , *** are used as symbols indicating significance levels for corresponding regressionscoefficients
+</details>
+
+## <span style="color:gray; font-family:Microsoft JhengHei;">**9.3**</span> Two-way ANCOVA
+
+<center>![Two-Way ANOVA](images/Two-Way ANOVA.jpg)</center>
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**9.3.1**</span> Question
+
+Previous experiments have shown that both genotype and sex of an organism affect body weight gain. However, a scientist believes that after adjusting for <u>age</u>, there was no significant difference in means of <u>weight</u> gain between groups at different levels of <u>sex</u> and <u>Genotype</u>. Can experiments support this claim?
+
+- Independent variables: 
+   - genotype (categorical)
+   - sex (categorical)
+   - age (covariate)
+- Dependent variable: 
+   - Weight gain (continuous)
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**9.3.2**</span> Model
+
+```{r}
+Gain <- read.table("data/Gain.txt", header = T)
+head(Gain, 3)
+m1 <- lm(Weight ~ Sex * Age * Genotype, data = Gain)
+summary(m1)
+```
+- There are no things like Age:Sex or Age:Genotype, so the slope of weight gain against age does not vary with sex or genotype
+- In the final minimal adequate model, three main effects were included (Sex, Age, Genotype), so it can be considered that there are intercept differences between gender, age and genotype (intercepts vary).
+- The final minimal adequate model includes three main effects (Sex, Age, Genotype), but no interaction effect. This means that the effects of these variables are independent and there is no interaction between them.
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**9.3.3**</span> One step
+
+```{r}
+m2 <- step(m1)
+summary(m2)
+```
+From the above output, we can see the coefficients of each genotype and their corresponding significance level (in the Estimate column). It can be observed that GenotypeCloneC and GenotypeCloneE have similar effects on the dependent variable, with coefficients close to -1 and very small significance levels (p-value < 0.001). Therefore, we can combine these two factors into one factor, reducing the number of genotype levels from six to five. The same approach can be applied to B and D.
+```{r}
+# Check
+newGenotype <- as.factor(Gain$Genotype)
+levels(newGenotype)
+# Change
+levels(newGenotype)[c(3,5)] <- "ClonesCandE"
+levels(newGenotype)[c(2,4)] <- "ClonesBandD"
+levels(newGenotype)
+# Liner regression & compare
+m3 <- lm(Weight ~ Sex + Age + newGenotype, data = Gain)
+anova(m2,m3)
+```
+<details>
+  <summary>Analysis of RSS above</summary>
+In regression models, the residual sum of squares (RSS) represents the unexplained variance in the dependent variable. In this example, the RSS for Model 1 and Model 2 are 2.7489 and 2.9938 respectively. The goal of a model is to minimize RSS because it represents how well the model fits with observed values. Generally, a smaller RSS indicates a better fit for the model. When comparing two models' fit, one can use both RSS and F-statistic. In this example, although Model 2 has a slightly larger RSS than Model 1, its P-value for F-statistic is 0.1087 which does not reach commonly used significance levels such as 0.05; therefore we cannot reject null hypothesis that Model 2 performs worse than Model 1.
+</details>
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**9.3.4**</span> Result
+
+As $p=0.1087$, there is no significant difference between the two models. Therefore, the new model uses NewGenotype (four levels) instead of Genotype (six levels).
+```{r}
+summary(m3)
+# Extracting formulas from linear regression models
+equatiomatic::extract_eq(m3, use_coefs = TRUE)
+# Create a diagnostic statistical data text table
+stargazer::stargazer(m3, type = 'text')
+```
+[The meaning of each parameter in this table](#diagnostic statistical data text table)
+
+### <span style="color:gray; font-family:Microsoft JhengHei;">**9.3.5**</span> Visualization
+
+```{r}
+plot(Weight~Age,data=Gain,type="n")
+colours <- c("green","red","black","blue")
+lines <- c(1,2)
+symbols <- c(16,17)
+NewSex<-as.factor(Gain$Sex)
+points(Weight~Age,data=Gain,pch=symbols[as.numeric(NewSex)],
+       col=colours[as.numeric(newGenotype)])
+xv <- c(1,5)
+for (i in 1:2) {
+  for (j in 1:4){
+    a <- coef(m3)[1]+(i>1)* coef(m3)[2]+(j>1)*coef(m3)[j+2]
+ 
+    b <- coef(m3)[3]
+    yv <- a+b*xv
+    lines(xv,yv,lty=lines[i],col=colours[j]) } }
+```
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**10**</span> MANCOVA
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -755,6 +1189,6 @@ To be continue...
 
 # [SessionInfo:]{style="color:green"}
 
-```{r echo=FALSE}
+```{r, echo=FALSE}
 sessionInfo()
 ```
