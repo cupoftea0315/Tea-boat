@@ -79,12 +79,8 @@ theme: ""
     }
 </style>
 
-**ENV222:**<br>
-
-👉🏻[Click to enter the ENV222 note section](../ENV222 note/ENV222 note.html)<br>
-
-**Detail lecture slides:**<br>
-
+<details>
+  <summary>Hyperlink of XJTLU ENV221 courseware</summary>
 - [Module overview mindmap](XJTLU_slides/ENV221 final testing points.pdf)<br>
 - [Lecture1 overview](XJTLU_slides/Week02_L01_overview.html)<br>
 - [Lecture2 r-basic](XJTLU_slides/Week03_L02_r-basic.html)<br>
@@ -98,6 +94,9 @@ theme: ""
 - [Lecture10 numerical-vs-numerical](XJTLU_slides/Week11_L10_numerical-vs-numerical.html)<br>
 - [Lecture11 numerical-vs-categorical](XJTLU_slides/Week13_L11_numerical-vs-categorical.html)<br>
 - [Lecture12 categorical-vs-categorical](XJTLU_slides/Week14_L12_categorical-vs-categorical.html)<br>
+</details>
+
+👉🏻[Click to enter the ENV222 note section](../ENV222 note/ENV222 note.html)
 
 # <span style="color:gray; font-family:Microsoft JhengHei;">**1**</span> graph part & R basic code
 

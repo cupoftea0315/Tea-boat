@@ -157,7 +157,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2023.04.04</p>
+      <p class="date">2023.04.05</p>
     </div>
   </div>
   
@@ -231,9 +231,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         line-height: 40px;
     }
 </style>
-<p><strong>ENV222:</strong><br></p>
-<p>👉🏻<a href="../ENV222%20note/ENV222%20note.html">Click to enter the ENV222 note section</a><br></p>
-<p><strong>Detail lecture slides:</strong><br></p>
+<details>
+<summary>
+Hyperlink of XJTLU ENV221 courseware
+</summary>
 <ul>
 <li><a href="XJTLU_slides/ENV221%20final%20testing%20points.pdf">Module overview mindmap</a><br></li>
 <li><a href="XJTLU_slides/Week02_L01_overview.html">Lecture1 overview</a><br></li>
@@ -249,6 +250,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="XJTLU_slides/Week13_L11_numerical-vs-categorical.html">Lecture11 numerical-vs-categorical</a><br></li>
 <li><a href="XJTLU_slides/Week14_L12_categorical-vs-categorical.html">Lecture12 categorical-vs-categorical</a><br></li>
 </ul>
+</details>
+<p>👉🏻<a href="../ENV222%20note/ENV222%20note.html">Click to enter the ENV222 note section</a></p>
 <section id="graph-part-r-basic-code" class="level1">
 <h1><span style="color:gray; font-family:Microsoft JhengHei;"><strong>1</strong></span> graph part &amp; R basic code</h1>
 <section id="scatterplot" class="level2">
@@ -367,11 +370,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> <span class="fu">c</span>(<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>, <span class="st">'e'</span>, <span class="st">'f'</span>, <span class="st">'g'</span>, <span class="st">'h'</span>, <span class="st">'i'</span> ,<span class="st">'j'</span>))   </span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(df<span class="sc">$</span>y[df<span class="sc">$</span>x <span class="sc">&gt;</span> <span class="dv">5</span>], <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "g" "f"</code></pre>
+<pre><code>[1] "g" "h"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(df<span class="sc">$</span>y[df<span class="sc">$</span>x <span class="sc">&lt;=</span> <span class="dv">5</span>], <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "b" "e"</code></pre>
+<pre><code>[1] "a" "e"</code></pre>
 </div>
 </div>
 </section>

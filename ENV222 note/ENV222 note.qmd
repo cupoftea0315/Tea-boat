@@ -79,6 +79,57 @@ theme: ""
     }
 </style>
 
+<details>
+  <summary>Hyperlink of XJTLU ENV222 courseware</summary>
+- [Lecture1 ENV222 Overview](https://pzhao.org/openr/ENV222-Overview.html)<br>
+- [Lecture2 R Markdown basic](https://pzhao.org/openr/R-markdown-basic.html)<br>
+- [Lecture3 R Markdown advanced](https://pzhao.org/openr/R-markdown-advanced.html)<br>
+- [Lecture4 R for characters](https://pzhao.org/openr/R-characters.html)<br>
+- [Lecture5 R for time data](https://pzhao.org/openr/R-time.html)<br>
+- [Lecture6 Statistical graphs (advanced)](https://pzhao.org/openr/R-graphs-advanced.html)<br>
+- [Lecture7 R Tidyverse](https://pzhao.org/openr/R-Tidyverse.html)<br>
+- [Lecture8 ANOVA Post-hoc tests](https://pzhao.org/openr/ANOVA-post-hoc.html)<br>
+- [Lecture9 MANOVA](https://pzhao.org/openr/MANOVA.html)<br>
+- [Lecture10 ANCOVA](https://pzhao.org/openr/ANCOVA.html)<br>
+- [Lecture11 MANCOVA](https://pzhao.org/openr/MANCOVA.html)<br>
+- [Lecture12 Combining statistics](https://pzhao.org/openr/Combining-statistics.html)<br>
+- [Lecture13 Non-parametric hypothesis tests](https://pzhao.org/openr/Non-parametric-hypothesis-tests.html)<br>
+- [Lecture14 Multiple linear regression](https://pzhao.org/openr/Multiple-linear-regression.html)<br>
+- [Lecture15 Logistic regression](https://pzhao.org/openr/Logistic-regression.html)<br>
+- [Lecture16 Poisson regression](https://pzhao.org/openr/Poisson-regression.html)<br>
+- [Lecture17 Non-linear regression](https://pzhao.org/openr/Non-linear-regression.html)<br>
+- [Lecture18 Principal component analysis](https://pzhao.org/openr/Principal-component-analysis.html)<br>
+- [Lecture19 Cluster analysis](https://pzhao.org/openr/Cluster-analysis.html)<br>
+</details>
+
+<details>
+  <summary>The meaning of each parameter in statistical table (Chinese)</summary>
+- Df（自由度）: 回归自由度（regression degrees of freedom）和误差自由度（error degrees of freedom）的总数，其中回归自由度为解释变量的个数减1，误差自由度为样本量减去解释变量的个数。
+- Sum Sq（平方和）: 每个来源的平方和（sum of squares），是变量离均差的平方和。回归平方和（regression sum of squares）表示自变量对因变量的影响程度，误差平方和（error sum of squares）表示自变量未能解释的部分。
+- Mean Sq（均方）: 每个来源的均方（mean square），是平方和除以自由度得到的平均数。回归均方（regression mean square）表示每个自变量对因变量的影响程度，误差均方（error mean square）表示自变量未能解释的部分的平均方差。
+- F value: 回归均方与误差均方的比值，用于判断模型的拟合程度，F值越大则模型越好。在一元线性回归中，F值等于t值的平方。
+- Pr(>F): Probability of obtaining a larger F value（得到更大的F值的概率）Pr(>F)是F检验得到的P值。p值越小则说明结果越显著，一般将显著性水平设为0.05，即当p值小于0.05时认为结果具有统计显著性。
+- Pillai: Pillai trace（皮莱迹）是在多元方差分析中使用的一种统计量，用于衡量所有因素对因变量的共同影响程度。
+- approx F: F approximation（F近似值）是根据Pillai迹值计算出来的F值。它用于评估多元方差分析的总体显著性。
+- num Df: Numerator degrees of freedom（分子自由度）指的是分子中的自由度。
+- den Df: Denominator degrees of freedom（分母自由度）指的是分母中的自由度。
+- Residuals: 残差，是指多元方差分析中的误差项，即不能被自变量解释的因变量方差。
+- Intercept: 截距，也称为常数项，表示当自变量为0时，因变量的预测值（或期望值）。
+- Estimate: 回归系数，表示自变量每增加一个单位时，因变量发生的平均变化量。
+- Std.Error: 标准误差，表示估计值的不确定性或误差，即估计值与真实值之间的平均差异。
+- t value: t值，表示回归系数的显著性，即回归系数除以其标准误差，得到的值与t分布相比较的结果。
+</details>
+
+<details>
+  <summary>How to choose between ANOVA, MANOVA, ANCOVA and MANCOVA (Chinese)</summary>
+ANOVA、MANOVA、ANCOVA和MANCOVA都是统计学中常见的分析方法，主要用于比较两个或多个组之间的差异性，并用统计学方法对这些差异进行推断和验证。
+
+- ANOVA（Analysis of Variance）：方差分析，用于比较两个或多个组的均值是否有显著差异，适用于只有一个自变量和一个因变量的情况。例如，用于比较不同教学方法对学生成绩的影响是否有显著差异。
+- MANOVA（Multivariate Analysis of Variance）：多元方差分析，用于比较两个或多个组的多个相关因变量是否有显著差异，适用于有多个相关因变量的情况。例如，用于比较不同教学方法对学生成绩、学生态度和学生动机等多个方面的影响是否有显著差异。
+- ANCOVA（Analysis of Covariance）：协方差分析，用于比较两个或多个组的均值是否有显著差异，并控制一个或多个协变量（即影响因素），适用于需要控制其他因素影响的情况。例如，用于比较不同教学方法对学生成绩的影响是否有显著差异，同时控制学生的初始水平，避免学生初始水平的不同对比较结果产生影响。
+- MANCOVA（Multivariate Analysis of Covariance）：多元协方差分析，同时控制多个协变量，比较两个或多个组的多个相关因变量是否有显著差异，适用于有多个相关因变量和多个协变量的情况。例如，用于比较不同教学方法对学生成绩、学生态度和学生动机等多个方面的影响是否有显著差异，同时控制学生的初始水平、性别、年龄等因素的影响。
+</details>
+
 👉🏻[Click to enter the ENV222 exercise section](../ENV222 exercise/ENV222 exercise.html)<br>
 👉🏻[Click to enter the ENV221 note section](../ENV221 note/ENV221 note.html)
 
@@ -105,6 +156,8 @@ theme: ""
 -   Also, use`{r, XXX-Plot, fig.cap="XXX-Plot"}` in the front of code chunk to add a caption of this figure
 
 -   Use something like`<span style="color:red; font-weight:bold; font-size:16px; font-family:Tahoma;">sentence</span>` to change the properties of text
+
+-   Use `<details><summary>title</summary>content</details>` to form Foldable item like this: <details><summary>title</summary>content</details>
 
 -   Use<br> `| Name | Math | English |`<br> `|:----:|:-----|--------:|`<br> `| Tom  | 93   |     100 |`<br> `| Mary | 60   |      90 |`<br> to form<br>
 
@@ -159,7 +212,7 @@ to form sub-rank like this below:<br>
 
 ## <span style="color:gray; font-family:Microsoft JhengHei;">**1.2**</span> Advanced
 
--   Numbering, caption, and cross-reference of R-plots in academic paper [Click to see the detail in ENV222 Week5-5.2](https://pzhao.org/openr/R-graphs-advanced.html)
+-   Numbering, caption, and cross-reference of R-plots in academic paper [Click to see the detail in ENV222 Week5-5.2](https://pzhao.org/openr/R-graphs-advanced.html#numbering-caption-and-cross-reference)
 
 # <span style="color:gray; font-family:Microsoft JhengHei;">**2**</span> Basic R charaters
 
@@ -643,7 +696,7 @@ mydata %>% summarise(
 
 Background informations: A biologist studies the weight gain of male lab rats on diets over a 4-week period. Three different diets are applied.
 
-```{r, fig.width = 6, fig.height = 4, fig.align='center'}
+```{r}
 # Statistic anlysis
 (dtf <- data.frame(diet1 = c(90, 95, 100),
                    diet2 = c(120, 125, 130),
@@ -652,6 +705,9 @@ dtf2 <- stack(dtf)
 names(dtf2) <- c("wg", "diet")
 wg_aov <- aov(wg ~ diet, data = dtf2)
 summary(wg_aov)
+```
+
+```{r, fig.width = 6, fig.height = 4, fig.align='center'}
 # Visualization
 library(ggplot2)
 ggplot(dtf2) + geom_boxplot(aes(wg, diet))
@@ -702,10 +758,44 @@ paired_groupmean <- combn(dtf_sm$mean, 2)
 paired_groupmean[2, ] - paired_groupmean[1, ]
 ```
 3. One step
-```{r, fig.width = 6, fig.height = 4, fig.align='center'}
+```{r}
 library(agricolae)
 # Statistic analysis
 LSD.test(wg_aov, "diet", p.adj = "bonferroni") |> print()
+```
+<details>
+  <summary>The meaning of each parameter in this table</summary>
+- $statistics：包含ANOVA分析的统计量（statistics）的列表。
+   - MSerror：平均方差误差（mean square error），也称为残差方差，表示模型误差的平均程度。
+   - Df：自由度（degrees of freedom）。
+   - Mean：均值（mean）。
+   - CV：变异系数（coefficient of variation），变异系数越大，说明数据的离散程度越大。
+   - t.value：t值（t-value），表示组间均值之间的显著性差异程度。
+   - MSD：最小显著差异（minimum significant difference），表示在显著性水平下两个组之间的最小显著差异值。
+- $parameters：包含对比分析的参数（parameters）的列表。
+   - test：所使用的多重比较方法（multiple comparison method），此处为Fisher-LSD法。
+   - p.ajusted：经过校正后的显著性水平（adjusted significance level），此处为Bonferroni法。
+   -name.t：所进行对比分析的因素名称（name of tested factor），此处为diet。
+   - ntr：因素水平数（number of treatments），此处为3。
+   - alpha：显著性水平（significance level），此处为0.05。
+- $means：包含各组均值和统计信息（means and statistics）的列表。
+   - wg：组均值（group mean）。
+   - std：标准差（standard deviation）。
+   - r：重复次数（replications）。
+   - LCL：下限置信区间（lower confidence limit）。
+   - UCL：上限置信区间（upper confidence limit）。
+   - Min：最小值（minimum value）。
+   - Max：最大值（maximum value）。
+   - Q25：25%分位数（25th percentile）。
+   - Q50：50%分位数（50th percentile），也称为中位数。
+   - Q75：75%分位数（75th percentile）。
+- $comparison：对比分析结果（comparison），此处为空。
+- $groups：分组结果（groups）。
+   - wg：组均值（group mean）。
+   - groups：分组结果（groups），使用字母表示不同组别，相同字母表示在统计上没有显著差异。
+- attr(,"class")：结果的类别（class），此处为"group"。
+</details>
+```{r, fig.width = 6, fig.height = 4, fig.align='center'}
 # Visualization
 LSD.test(wg_aov, "diet", p.adj = "bonferroni") |> plot()
 box()
@@ -811,8 +901,8 @@ iris[, c('Species', 'Sepal.Length', 'Sepal.Width')] |>
   labs(y = 'Size (cm)', fill = '')
 library(gplots)
 par(mfrow = c(1, 2))
-plotmeans(iris$Sepal.Length ~ iris$Species)
-plotmeans(iris$Sepal.Width ~ iris$Species)
+plotmeans(iris$Sepal.Length ~ iris$Species, xlab = "Species", ylab = "Sepal length")
+plotmeans(iris$Sepal.Width ~ iris$Species, xlab = "Species", ylab = "Sepal width")
 ```
 **Hypothesis:** multivariate normality test
 - $H_0$: The population means of the sepal length and the sepal width are not different across the species.
@@ -972,7 +1062,7 @@ $$Y_{ij} = (\mu+\tau_{i})+\beta(x_{ij}-\bar{x})+\epsilon_{ij}$$
 
 ### <span style="color:gray; font-family:Microsoft JhengHei;">**9.2.1**</span> Question
 
-<center>![One-Way ANCOVA](images/One-Way ANOVA.jpg)</center>
+<center>![ANCOVA](images/ANCOVA.jpg)</center>
 
 **Example 1:** Does <u>grazing</u> have influence on the fruit production? Are grazed plants have more fruit <u>production</u> than ungrazed ones?
 
@@ -1068,24 +1158,24 @@ stargazer::stargazer(df1_ancova2, type = 'text')
 ```
 <details>
   <summary>The meaning of each parameter in this table</summary>
-- Dependent variable: The name of the dependent variable.
-- Independent variables: The names of the independent variables.
-- Coefficients: Regression coefficients, indicating the degree to which an independent variable affects the dependent variable when it increases by one unit.
-- Standard errors: Standard error of regression coefficients, measuring the stability of regression coefficients.
-- t-statistics: t-value of regression coefficients, representing whether a regression coefficient is significantly different from zero and has a significant impact on the dependent variable.
-- p-values: Significance level of regression coefficients, usually used to determine whether a regression coefficient is significantly different from zero. The smaller the p-value, the more significant the regression coefficient is considered to be.
-- Observations: Sample size.
-- R2: Goodness-of-fit measure that represents how much variance in explanatory variables can be explained by model. A higher value indicates better fit between model and data
-- Adjusted R2：A modified version of R2 that takes into account number of independent variables for greater accuracy
-- Residual standard error：Standard deviation or dispersion measure for residuals; smaller values indicate better model fit
-- F-statistic：Statistical test used to evaluate overall goodness-of-fit for linear models 
-- df：Degrees of freedom 
-- Note:p<0.1,p<0.05,p<0.01 : When p-value is less than 0.1, 0.05 or 0.01 respectively,* , ** , *** are used as symbols indicating significance levels for corresponding regressionscoefficients
+- Dependent variable: The name of the dependent variable. (因变量的名称)
+- Independent variables: The names of the independent variables. (自变量的名称)
+- Coefficients: Regression coefficients, indicating the degree to which an independent variable affects the dependent variable when it increases by one unit. (回归系数，表示自变量每增加一个单位对因变量的影响程度)
+- Standard errors: Standard error of regression coefficients, measuring the stability of regression coefficients. (回归系数的标准误差，衡量回归系数的稳定性)
+- t-statistics: t-value of regression coefficients, representing whether a regression coefficient is significantly different from zero and has a significant impact on the dependent variable. (回归系数的t值，代表回归系数是否显著不为0，即是否对因变量有显著影响)
+- p-values: Significance level of regression coefficients, usually used to determine whether a regression coefficient is significantly different from zero. The smaller the p-value, the more significant the regression coefficient is considered to be. (回归系数的显著性水平，通常用于判断回归系数是否显著不为0，p值越小，表示回归系数越显著)
+- Observations: Sample size. (样本数量)
+- R2: Goodness-of-fit measure that represents how much variance in explanatory variables can be explained by model. A higher value indicates better fit between model and data. (拟合优度，表示模型解释变量方差的比例，数值越高表示模型拟合程度越好)
+- Adjusted R2：A modified version of R2 that takes into account number of independent variables for greater accuracy. (调整后的拟合优度，考虑到自变量的个数，比R2更准确)
+- Residual standard error：Standard deviation or dispersion measure for residuals; smaller values indicate better model fit. (残差标准误，表示残差的离散程度，越小表示模型越好)
+- F-statistic：Statistical test used to evaluate overall goodness-of-fit for linear models. (F统计量，用于检验模型整体拟合优度是否显著)
+- df：Degrees of freedom. (自由度)
+- Note:p<0.1,p<0.05,p<0.01 : When p-value is less than 0.1, 0.05 or 0.01 respectively,* , ** , *** are used as symbols indicating significance levels for corresponding regressions coefficients. (p<0.1, p<0.05, p<0.01：p值小于0.1，0.05，0.01时，分别用*，**，***表示，代表回归系数的显著性水平)
 </details>
 
 ## <span style="color:gray; font-family:Microsoft JhengHei;">**9.3**</span> Two-way ANCOVA
 
-<center>![Two-Way ANOVA](images/Two-Way ANOVA.jpg)</center>
+<center>![ANCOVA](images/ANCOVA.jpg)</center>
 
 ### <span style="color:gray; font-family:Microsoft JhengHei;">**9.3.1**</span> Question
 
@@ -1168,24 +1258,124 @@ for (i in 1:2) {
 
 # <span style="color:gray; font-family:Microsoft JhengHei;">**10**</span> MANCOVA
 
+<center>![One-Way MANCOVA](images/One-Way MANCOVA.jpg)</center>
+<center>![Two-Way MANCOVA](images/Two-Way MANCOVA.jpg)</center>
+- Dependent variables: multiple continuous variables
+- Independent variables: one or multiple categorical variables, one or multiple continuous variables (covariates)
 
+## <span style="color:gray; font-family:Microsoft JhengHei;">**10.1**</span> Definition of MANCOVA
 
+<span style="color:red">**Multivariate Analysis of Covariance (MANCOVA) = multivariate ANCOVA = MANOVA with covariate(s)**</span><br>
+Analysis for the differences among group means for a linear combination of the dependent variables after adjusted for the covariate. Test whether the independent variable(s) has a significant influence on the dependent variables, excluding the influence of the covariate (preferably highly correlated with the dependent variable)
 
+- Independent Random Sampling: Independence of observations from all other observations.
+- Level and Measurement of the Variables: The independent variables are categorical and the dependent variables are continuous or scale variables. Covariates are continuous.
+- Homogeneity of Variance: Variance between groups is equal.
+- Normality: For each group, each dependent variable follows a normal distribution and any linear combination of dependent variables are normally distributed
 
+<details>
+  <summary>Brief explanation in Chinese</summary>
+在MANCOVA中，我们有多个因变量（即连续或比例变量），一个或多个自变量（即分类变量），以及一个或多个协变量（即连续变量）。这些变量的测量水平应该正确，并且观察值应该是独立随机采样的。这意味着，我们要确保观察值彼此独立，不受其他变量的影响。同时，我们需要检查每个组的因变量是否都符合正态分布，并且方差应该相等。  
+如果我们的数据满足这些假设，则可以使用MANCOVA来探索自变量对因变量的影响，并且通过协变量来控制一些其他影响因素的影响。MANCOVA可以更准确地确定组间差异是否真实存在，而不是基于单个因变量的分析来做出判断。 MANCOVA通常用于实验设计，研究人员想要比较多个组的平均得分，同时控制其他因素的影响。
+</details>
 
+## <span style="color:gray; font-family:Microsoft JhengHei;">**10.2**</span> Workflow
 
+### <span style="color:gray; font-family:Microsoft JhengHei;">**10.2.1**</span> Question
 
+**Example:** Are there differences in productivity (measured by income and hours worked) for individuals in different age groups after adjusted for the education level?  
 
+- Dependent variables:
+   - wage (continuous)
+   - age (continuous)
+- Independent variables:
+   - education (categorical)
+   - year (continuous, covariate)
 
+### <span style="color:gray; font-family:Microsoft JhengHei;">**10.2.2**</span> Visualization
 
+```{r}
+library(tidyverse)
+library(ISLR)
+library(car)
+ggplot(Wage, aes(age, wage)) + geom_point(alpha = 0.3) + 
+  geom_smooth(method = lm) + facet_grid(year~education)
+```
 
+### <span style="color:gray; font-family:Microsoft JhengHei;">**10.2.3**</span> Model
 
+- `manova()` way
+```{r}
+wage_manova1 <- manova(cbind(wage, age) ~ education * year, data = Wage)
+wage_manova1
+summary.aov(wage_manova1)
+```
+<details>
+  <summary>Brief explanation in Chinese</summary>
+根据结果，教育和年份两个因子对 wage 有显著影响，因为它们的 P 值均小于0.05。但是，交互作用项 "education:year" 的 P 值大于0.05，表明这个交互项对 wage 没有显著影响。<br><br> 
+对于年龄变量，教育和(年份≈0.05)都对其有显著影响，因为它们的 P 值小于0.05。然而，交互项 "education:year" 对 age 没有显著影响，因为其 P 值大于0.05。
+</details>
 
+- `jmv::mancova()` way
+```{r}
+library(jmv)
+wage_manova2 <- jmv::mancova(data = Wage,
+                             deps = vars(wage, age),
+                             factors = education, 
+                             covs = year)
+wage_manova2
+```
+<details>
+  <summary>Brief explanation in Chinese</summary>
+在 Multivariate Tests 表格中，我们可以看到 education 和 year 这两个自变量的多元假设检验结果。四种统计量都显示了这两个变量的组合对因变量 wage 和 age 有显著影响（p 值 < 0.0001）。<br><br>
+在 Univariate Tests 表格中，我们可以看到每个因变量 wage 和 age 的单元假设检验结果。结果显示 education 对 wage 和 age 都有显著影响（p 值 < 0.0001），而 year 只对 wage 有显著影响（p 值 = 0.0004）。值得注意的是，age 的 year 效应在 p 值为 0.0529 的边缘。Residuals 列显示了每个因变量在模型中的残差方差。<br><br>
+总体来说，这个 MANCOVA 模型表明，在控制了 education 和 year 之后，wage 和 age 之间存在着相关性，并且 education 和 year 对这种关系都有显著的影响。
+</details>
 
+### <span style="color:gray; font-family:Microsoft JhengHei;">**10.2.4**</span> Result
 
+- Since the interaction effect is not significant (p = 0.77 for salary and p = 0.24 for age), the slopes are parallel.
+- The wage and age differ significantly among education groups (p for both wage and age are far below 0.05).
+- Differences in salary also significantly (p = 0.00038) increase over time (variable year), due to some economic reasons, while differences in age don’t change (p = 0.053) much.
 
+<details>
+  <summary>Brief explanation in Chinese</summary>
+- 对于交互作用效应而言，它在wage和age方面的p值分别为0.771086和0.24043，因此交互作用效应不显著。这意味着不同教育水平组之间的工资和年龄差异的斜率是平行的。
+- 对于MANOVA表格中的“Multivariate Tests”部分，education组之间的差异在wage和age方面都显著(p值均远远低于0.05)。
+- 对于ANOVA表格中的“Univariate Tests”部分，随时间的推移，salary方面的差异显著增加(p=0.000384)，而age方面的差异则没有显著变化(p=0.05282)。这表明时间变化是造成salary变化的一个重要原因，而不是年龄变化。
+</details>
 
+# <span style="color:gray; font-family:Microsoft JhengHei;">**11**</span> Combining statistics
 
+<span style="color:#008888">To be continue...</span>
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**12**</span> Non-parametric hypothesis tests
+
+<span style="color:#008888">To be continue...</span>
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**13**</span> Multiple linear regression
+
+<span style="color:#008888">To be continue...</span>
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**14**</span> Logistic regression
+
+<span style="color:#008888">To be continue...</span>
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**15**</span> Poisson regression
+
+<span style="color:#008888">To be continue...</span>
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**16**</span> Non-linear regression
+
+<span style="color:#008888">To be continue...</span>
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**17**</span> Principal component analysis
+
+<span style="color:#008888">To be continue...</span>
+
+# <span style="color:gray; font-family:Microsoft JhengHei;">**18**</span> Cluster analysis
+
+<span style="color:#008888">To be continue...</span>
 
 # [SessionInfo:]{style="color:green"}
 
